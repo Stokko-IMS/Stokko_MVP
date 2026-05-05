@@ -3,7 +3,7 @@ const router = express.Router();
 export default router;
 
 import { createUser, login } from "../db/queries/users.js";
-import requireBody from "../middleware/requirebody.js";
+import requireBody from "../middleware/requireBody.js";
 import { createToken } from "../utils/jwt.js";
 
 router.post(
