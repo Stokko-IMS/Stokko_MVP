@@ -1,21 +1,33 @@
 import express from "express";
-const app = express();
-export default app;
 
 import morgan from "morgan";
 import getUserFromToken from "./backend/middleware/getUserFromToken.js";
+
+// Routers -------------------------------------------------------------
+
 import ordersRouter from "./backend/api/orders.js";
 import usersRouter from "./backend/api/users.js";
-// import other routers here.
+// import orderItemsRouter from "./backend/api/orderItems.js";
+import itemsRouter from "./backend/api/items.js";
+import inventoryRouter from "./backend/api/inventory.js";
+import transactionsRouter from "./backend/api/inventoryTransactions.js";
+// import orderItemsRouter from "./backend/api/orderItems.js";
+// import other routers here.------------------------------------------
 
+const app = express();
+
+//------ core middleware --------------------------------------
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
-
 app.use(getUserFromToken);
 
-app.use("/users", usersRouter);
-app.use("/orders", ordersRouter);
+// --Routes
+app.use("/api/users", usersRouter);
+app.use("/api/orders", ordersRouter);
+app.use("/api/items", itemsRouter);
+app.use("/api/inventory", inventoryRouter);
+app.use("/api/transactions", transactionsRouter);
 // add other routers here.
 
 app.use((err, req, res, next) => {
@@ -31,6 +43,9 @@ app.use((err, req, res, next) => {
     // Foreign key violation
     case "23503":
       return res.status(400).json(err.detail);
+    // Not null violation
+    case "23502":
+      return res.status(400).json({ error: err.detail });
     default:
       next(err);
   }
@@ -41,3 +56,5 @@ app.use((err, req, res, next) => {
   res.status(500).json("Sorry! Something went wrong.");
   next();
 });
+
+export default app;
