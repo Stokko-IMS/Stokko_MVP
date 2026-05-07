@@ -1,5 +1,6 @@
 import express from "express";
 
+import cors from "cors";
 import morgan from "morgan";
 import getUserFromToken from "./backend/middleware/getUserFromToken.js";
 
@@ -20,6 +21,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use(cors());
 app.use(getUserFromToken);
 
 // --Routes
