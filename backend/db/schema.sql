@@ -75,6 +75,6 @@ item_id INTEGER NOT NULL REFERENCES items(id),
 /* location_id INTEGER REFERENCES locations(id), */
 quantity_change INTEGER NOT NULL,
 reason TEXT NOT NULL, /* 'restock', 'sale', 'waste', 'adjustment' look into ENUM data type(data protection)*/
-user_id INTEGER NOT NULL REFERENCES users(id)  ON DELETE CASCADE,
+user_id INTEGER NOT NULL REFERENCES users(id),
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

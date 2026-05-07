@@ -1,6 +1,5 @@
 import express from "express";
 const router = express.Router();
-export default router;
 
 import requireUser from "../middleware/requireUser.js";
 import requireBody from "../middleware/requireBody.js";
@@ -11,40 +10,49 @@ import {
   deleteOrder,
   approveOrder,
 } from "../db/queries/orders.js";
+import { addItemsToOrder } from "../db/queries/orderItems.js";
 
 router.use(requireUser);
 
 router.post(
   "/",
   requireBody(["supplier_name", "supplier_email", "status"]),
-  async (req, res) => {
-    const { supplier_name, supplier_email, status, approved_by } = req.body;
-    const allowedStatuses = ["draft", "submitted", "received", "complete"];
+  async (req, res, next) => {
+    try {
+      const { supplier_name, supplier_email, status, approved_by } = req.body;
+      const allowedStatuses = ["draft", "submitted", "received", "complete"];
 
-    if (!allowedStatuses.includes(status)) {
-      return res.status(400).json({
-        error: "Invalid status",
-        allowed: allowedStatuses,
-      });
-      // added this check from chatGPT in order to safeguard against unauthorized statuses
+      if (!allowedStatuses.includes(status)) {
+        return res.status(400).json({
+          error: "Invalid status",
+          allowed: allowedStatuses,
+        });
+        // added this check from chatGPT in order to safeguard against unauthorized statuses
+      }
+      const user_id = req.user.id;
+      const created_by = req.user.id;
+      const createdOrder = await createOrder(
+        supplier_name,
+        supplier_email,
+        status,
+        created_by,
+        approved_by || null,
+        user_id,
+      );
+      res.status(201).json(createdOrder);
+    } catch (err) {
+      next(err);
     }
-    const user_id = req.user.id;
-    const created_by = req.user.id;
-    const createdOrder = await createOrder(
-      supplier_name,
-      supplier_email,
-      status,
-      created_by,
-      approved_by || null,
-      user_id,
-    );
-    res.status(201).json(createdOrder);
   },
 );
 
-router.get("/", async (req, res) => {
-  const orders = await getOrdersByUserId(req.user.id);
-  res.json(orders);
+router.get("/", async (req, res, next) => {
+  try {
+    const orders = await getOrdersByUserId(req.user.id);
+    res.json(orders);
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.param("id", async (req, res, next, id) => {
@@ -72,3 +80,21 @@ router.put("/:id", async (req, res) => {
   if (!updated) return res.status(400).json("Order already approved");
   res.status(200).json(updated);
 });
+
+router.post(
+  "/:id",
+  requireBody(["item_id", "quantity", "price"]),
+  async (req, res) => {
+    const { item_id, quantity, price } = req.body;
+    const addedItem = await addItemsToOrder(
+      req.order.id,
+      item_id,
+      quantity,
+      price,
+    );
+    if (!addedItem) return res.status(400).json("Item already exists in order");
+    res.status(201).json(addedItem);
+  },
+);
+
+export default router;

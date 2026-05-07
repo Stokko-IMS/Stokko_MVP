@@ -1,30 +1,26 @@
 import db from "../client.js";
 
-export async function getLedger() {
+export async function getTransactions(userId) {
   const sql = `
   SELECT * FROM 
-    inventory_transactions`;
-  const { rows: transactions } = await db.query(sql);
+    inventory_transactions
+  WHERE user_id = $1`;
+  const { rows: transactions } = await db.query(sql, [userId]);
   return transactions;
 }
 
-export async function getTransactionById(id) {
+export async function getTransactionById(id, userId) {
   const sql = `
   SELECT * FROM
     inventory_transactions
-  WHERE id = $1`;
+  WHERE id = $1 AND user_id = $2`;
   const {
     rows: [transaction],
-  } = await db.query(sql, [id]);
+  } = await db.query(sql, [id, userId]);
   return transaction;
 }
 
-export async function executeStockAdjustment(
-  itemId,
-  quantityChange,
-  reason,
-  userId,
-) {
+export async function addTransaction(itemId, quantityChange, reason, userId) {
   const sql = `
   INSERT INTO
     inventory_transactions
@@ -36,3 +32,5 @@ export async function executeStockAdjustment(
   } = await db.query(sql, [itemId, quantityChange, reason, userId]);
   return transaction;
 }
+
+// Possibly add queries for deleteTransaction, amendTransaction //
