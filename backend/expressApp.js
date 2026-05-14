@@ -2,16 +2,16 @@ import express from "express";
 
 import cors from "cors";
 import morgan from "morgan";
-import getUserFromToken from "./backend/middleware/getUserFromToken.js";
+import getUserFromToken from "./middleware/getUserFromToken.js";
 
 // Routers -------------------------------------------------------------
 
-import ordersRouter from "./backend/api/orders.js";
-import usersRouter from "./backend/api/users.js";
+import ordersRouter from "./api/orders.js";
+import usersRouter from "./api/users.js";
 // import orderItemsRouter from "./backend/api/orderItems.js";
-import itemsRouter from "./backend/api/items.js";
-import inventoryRouter from "./backend/api/inventory.js";
-import transactionsRouter from "./backend/api/inventoryTransactions.js";
+import itemsRouter from "./api/items.js";
+import inventoryRouter from "./api/inventory.js";
+import transactionsRouter from "./api/inventoryTransactions.js";
 // import orderItemsRouter from "./backend/api/orderItems.js";
 // import other routers here.------------------------------------------
 
