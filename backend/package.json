@@ -1,0 +1,34 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Stokko-IMS/Stokko_MVP#readme",
+  "bugs": {
+    "url": "https://github.com/Stokko-IMS/Stokko_MVP/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stokko-IMS/Stokko_MVP.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "db:schema": "psql -d stokko -f backend/db/schema.sql",
+    "db:seed": "node --env-file=.env backend/db/seed.js",
+    "db:reset": "npm run db:schema && npm run db:seed",
+    "devserver": "node --watch --env-file=.env server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.10.1",
+    "nodemon": "^3.1.14",
+    "pg": "^8.20.0"
+  }
+}
