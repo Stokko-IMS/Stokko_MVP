@@ -1,4 +1,4 @@
-import app from "../expressApp.js";
+import app from "./expressApp.js";
 import db from "./db/client.js";
 
 const PORT = process.env.PORT || 3000;
