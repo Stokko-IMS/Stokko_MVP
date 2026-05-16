@@ -75,14 +75,14 @@ router.delete("/:id", async (req, res) => {
   res.status(204);
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id/approve", async (req, res) => {
   const updated = await approveOrder(req.user.id, req.order.id);
   if (!updated) return res.status(400).json("Order already approved");
   res.status(200).json(updated);
 });
 
 router.post(
-  "/:id",
+  "/:id/items",
   requireBody(["item_id", "quantity", "price"]),
   async (req, res) => {
     const { item_id, quantity, price } = req.body;
