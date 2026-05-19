@@ -30,7 +30,7 @@ export async function approveOrder(id, approval) {
 
 export async function addItemsToOrder(id, itemId) {
   return apiClient(`/orders/${id}/items`, {
-    method: "PUT",
+    method: "POST",
     body: JSON.stringify(itemId),
   });
 }
