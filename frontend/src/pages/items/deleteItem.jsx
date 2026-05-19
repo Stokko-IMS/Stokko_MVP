@@ -1,5 +1,3 @@
-function deleteItem() {
+export default function DeleteItem() {
   return <div>deleteItem</div>;
 }
-
-export default deleteItem;

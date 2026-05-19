@@ -1,5 +1,3 @@
-function orders() {
+export default function Orders() {
   return <div>orders</div>;
 }
-
-export default orders;

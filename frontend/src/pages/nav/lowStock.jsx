@@ -1,5 +1,3 @@
-function lowStock() {
+export default function LowStock() {
   return <div>lowStock</div>;
 }
-
-export default lowStock;

@@ -1,5 +1,3 @@
-function cta() {
+export default function CTA() {
   return <div>cta</div>;
 }
-
-export default cta;

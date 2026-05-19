@@ -1,5 +1,3 @@
-function updateItem() {
+export default function UpdateItem() {
   return <div>updateItem</div>;
 }
-
-export default updateItem;

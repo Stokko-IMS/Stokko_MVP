@@ -1,5 +1,4 @@
-function stockTakePage() {
+export default function StockTakePage() {
   return <div>stockTakePage</div>;
 }
 
-export default stockTakePage;

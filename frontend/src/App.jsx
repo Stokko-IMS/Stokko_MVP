@@ -1,18 +1,18 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/auth/login";
-import Register from "./pages/auth/register";
-import Home from "./pages/home";
-import Dashboard from "./pages/nav/dashboard";
-import Inventory from "./pages/nav/inventory";
-import LowStock from "./pages/nav/lowStock";
-import Orders from "./pages/nav/orders";
-import StockTakePage from "./pages/stockTakePage";
-import Transactions from "./pages/transactions";
-import Error404 from "./pages/error404.jsx";
-import ProductDetails from "./pages/nav/productDetails";
-import AddEditItem from "./pages/items/addEditItem"; /*add and update included in one page*/
+import Login from "./pages/auth/Login.jsx";
+import Register from "./pages/auth/Register.jsx";
+import Home from "./pages/Home.jsx";
+import Dashboard from "./pages/nav/Dashboard.jsx";
+import Inventory from "./pages/nav/Inventory.jsx";
+import LowStock from "./pages/nav/LowStock.jsx";
+import Orders from "./pages/nav/Orders.jsx";
+import StockTakePage from "./pages/StockTakePage.jsx";
+import Transactions from "./pages/Transactions.jsx";
+import Error404 from "./pages/Error404.jsx";
+import ProductDetails from "./pages/nav/ProductDetails.jsx";
+import AddEditItem from "./pages/items/AddEditItem.jsx"; /*add and update included in one page*/
 import ContactUs from "./src/pages/contactUs";
-import ProtectedRoute from "./components/protectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 function App() {
   return (
@@ -34,11 +34,13 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/stockTakePage" element={<StockTakePage />} />
         <Route path="/transactions" element={<Transactions />} />
+        <Route path="/productDetails" element={<ProductDetails />} />
+        <Route path="/addEditItems" element={<AddEditItem />} />
       </Route>
 
       {/* Fallback */}
 
-      <Route path="*" element={<Navigate to="/404" replace />} />
+      <Route path="*" element={<Navigate to="/error404" replace />} />
     </Routes>
   );
 }

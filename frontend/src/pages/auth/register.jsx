@@ -1,5 +1,3 @@
-function register() {
+export default function Register() {
   return <div>register</div>;
 }
-
-export default register;
