@@ -11,7 +11,7 @@ import Transactions from "./pages/transactions";
 import Error404 from "./pages/error404.jsx";
 import ProductDetails from "./pages/nav/productDetails";
 import AddEditItem from "./pages/items/addEditItem"; /*add and update included in one page*/
-import ContactUs from "./src/pages/contactUs";
+import ContactUs from "./pages/contactUs";
 import ProtectedRoute from "./components/protectedRoute";
 
 function App() {
@@ -30,9 +30,13 @@ function App() {
 
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/inventory" element={<Inventory />} />
+        <Route path="/inventory/add" element={<AddEditItem />} />
+        <Route path="/inventory/edit/:id" element={<AddEditItem />} />
+        <Route path="/inventory/:id" element={<ProductDetails />} />
         <Route path="/lowStock" element={<LowStock />} />
-        <Route path="/orders" element={<Orders />} />
         <Route path="/stockTakePage" element={<StockTakePage />} />
+
+        <Route path="/orders" element={<Orders />} />
         <Route path="/transactions" element={<Transactions />} />
       </Route>
 

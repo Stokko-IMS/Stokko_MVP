@@ -2,7 +2,7 @@
 
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getItemById, DeleteItem } from "../../api/items.js";
+import { getItemById, deleteItem } from "../../api/items.js";
 
 const ProductDetails = () => {
   const { id } = useParams();

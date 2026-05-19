@@ -10,7 +10,7 @@ export async function createUser(name, email, password, contact_number) {
   const {
     rows: [user],
   } = await db.query(sql, [name, email, hashedPassword, contact_number]);
-  return user.name + user.email + user.contact_number;
+  return user; //.name + user.email + user.contact_number;
 }
 
 export async function login(email, password) {
