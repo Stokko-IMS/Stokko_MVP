@@ -15,7 +15,7 @@ const ProductDetails = () => {
 
   const handleDelete = async () => {
     if (window.confirm("Are you sure?")) {
-      deleteItem(id);
+      DeleteItem(id);
       navigate("/inventory");
     }
   };
