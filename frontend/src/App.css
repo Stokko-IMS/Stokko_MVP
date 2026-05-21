@@ -167,7 +167,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;
@@ -180,5 +180,46 @@
   &::after {
     right: 0;
     border-right-color: var(--border);
+  }
+}
+
+/*===========================Media Queries ===============================*/
+
+/* Desktop — sidenav visible, bottom nav hidden */
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.app-shell {
+  display: flex;
+}
+
+.app-main {
+  margin-left: 160px;
+  flex: 1;
+}
+
+.mobile-bottom-nav {
+  display: none;
+}
+
+/* Mobile — sidenav hidden, bottom nav visible */
+@media (max-width: 767px) {
+  .sidenav {
+    display: none;
+  }
+
+  .app-main {
+    margin-left: 0;
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
   }
 }
