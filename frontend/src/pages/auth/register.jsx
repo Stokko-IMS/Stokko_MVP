@@ -41,7 +41,7 @@ export default function Register() {
     <main>
       <h1>Create Your Account</h1>
 
-      <form action="{tryRegister}">
+      <form action={tryRegister}>
         <label>
           Name *
           <input
