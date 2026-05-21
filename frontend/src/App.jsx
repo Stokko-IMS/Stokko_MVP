@@ -38,11 +38,13 @@ function App() {
 
         <Route path="/orders" element={<Orders />} />
         <Route path="/transactions" element={<Transactions />} />
+        <Route path="/productDetails" element={<ProductDetails />} />
+        <Route path="/addEditItems" element={<AddEditItem />} />
       </Route>
 
       {/* Fallback */}
 
-      <Route path="*" element={<Navigate to="/404" replace />} />
+      <Route path="*" element={<Navigate to="/error404" replace />} />
     </Routes>
   );
 }

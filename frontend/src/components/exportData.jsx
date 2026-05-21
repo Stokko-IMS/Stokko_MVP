@@ -1,5 +1,3 @@
-function exportData() {
+export default function ExportData() {
   return <div>exportData</div>;
 }
-
-export default exportData;

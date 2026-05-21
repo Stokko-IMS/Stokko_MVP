@@ -1,5 +1,3 @@
-function transaction() {
+export default function Transaction() {
   return <div>transaction</div>;
 }
-
-export default transaction;

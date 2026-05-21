@@ -1,5 +1,3 @@
-function inventory() {
+export default function Inventory() {
   return <div>inventory</div>;
 }
-
-export default inventory;

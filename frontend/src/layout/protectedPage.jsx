@@ -1,5 +1,3 @@
-function protectedPage() {
+export default function ProtectedPage() {
   return <div>protectedPage</div>;
 }
-
-export default protectedPage;

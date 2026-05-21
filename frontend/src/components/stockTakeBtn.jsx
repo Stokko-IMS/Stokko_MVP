@@ -1,5 +1,3 @@
-function stockTakeBtn() {
+export default function StockTakeBtn() {
   return <div>stockTakeBtn</div>;
 }
-
-export default stockTakeBtn;

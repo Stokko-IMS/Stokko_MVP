@@ -1,5 +1,3 @@
-function confirmSavePages() {
+export default function ConfirmSavePages() {
   return <div>confirmSavePages</div>;
 }
-
-export default confirmSavePages;

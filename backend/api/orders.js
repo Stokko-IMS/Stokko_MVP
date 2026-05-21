@@ -72,7 +72,7 @@ router.get("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   await deleteOrder(req.order.id);
-  res.status(204);
+  res.sendStatus(204);
 });
 
 router.put("/:id/approve", async (req, res) => {

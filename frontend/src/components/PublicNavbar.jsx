@@ -1,6 +1,6 @@
-import { Link } from "react";
+import { Link } from "react-router";
 
-export default function HomeNavbar() {
+export default function PublicNavbar() {
   return (
     <nav>
       <img src="../assets/stokkoLogo" alt="Stokko Logo" />

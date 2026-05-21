@@ -1,5 +1,3 @@
-function itemCard() {
+export default function ItemCard() {
   return <div>itemCard</div>;
 }
-
-export default itemCard;

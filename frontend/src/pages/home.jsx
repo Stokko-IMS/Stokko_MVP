@@ -1,12 +1,12 @@
-import HomeNavbar from "../components/homePage/HomeNavbar";
+import PublicNavbar from "../components/publicNavbar";
 import Hero from "../components/homePage/Hero";
 import FeaturesSection from "../components/homePage/FeaturesSection";
 import Footer from "../components/Footer";
 
-export default function home() {
+export default function Home() {
   return (
     <div>
-      <HomeNavbar />
+      <PublicNavbar />
 
       <Hero />
 
