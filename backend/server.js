@@ -1,5 +1,6 @@
 import app from "./expressApp.js";
 import db from "./db/client.js";
+import "dotenv/config";
 
 const PORT = process.env.PORT || 3000;
 
