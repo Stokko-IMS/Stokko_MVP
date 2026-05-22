@@ -70,6 +70,7 @@ export async function updateItem(
   quantity,
   lowStockThreshold,
 ) {
+  // MUST RE-ADD ITEM_PHOTO TO QUERY WHEN ITEM PHOTO ADDING GETS FIGURED OUT //
   const sql = `
   UPDATE items
   SET
