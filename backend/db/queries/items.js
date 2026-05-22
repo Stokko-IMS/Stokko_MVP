@@ -7,14 +7,13 @@ export async function createItem(
   unit,
   quantity,
   lowStockThreshold,
-  itemPhoto,
   userId,
 ) {
   const sql = `
     INSERT INTO items
-    (name, description, sku, unit, quantity, low_stock_threshold, item_photo, user_id)
+    (name, description, sku, unit, quantity, low_stock_threshold, user_id)
     VALUES
-    ($1, $2, $3, $4, $5, $6, $7, $8)
+    ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *
     `;
 
@@ -27,7 +26,6 @@ export async function createItem(
     unit,
     quantity,
     lowStockThreshold,
-    itemPhoto,
     userId,
   ]);
   return item;
@@ -71,8 +69,8 @@ export async function updateItem(
   unit,
   quantity,
   lowStockThreshold,
-  itemPhoto,
 ) {
+  // MUST RE-ADD ITEM_PHOTO TO QUERY WHEN ITEM PHOTO ADDING GETS FIGURED OUT //
   const sql = `
   UPDATE items
   SET
@@ -81,9 +79,8 @@ export async function updateItem(
   sku = $3,
   unit = $4,
   quantity = $5,
-  low_stock_threshold = $6,
-  item_photo = $7
-  WHERE id = $8 AND user_id = $9
+  low_stock_threshold = $6
+  WHERE id = $7 AND user_id = $8
   RETURNING *
   `;
   const {
@@ -95,7 +92,6 @@ export async function updateItem(
     unit,
     quantity,
     lowStockThreshold,
-    itemPhoto,
     id,
     userId,
   ]);

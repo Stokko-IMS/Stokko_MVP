@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import Layout from "./layout/layout.jsx";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Home from "./pages/home";
@@ -26,19 +27,20 @@ function App() {
 
       {/* Protected Routes */}
       <Route element={<ProtectedRoute />}>
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/inventory" element={<Inventory />} />
-        <Route path="/inventory/add" element={<AddEditItem />} />
-        <Route path="/inventory/edit/:id" element={<AddEditItem />} />
-        <Route path="/inventory/:id" element={<ProductDetails />} />
-        <Route path="/lowStock" element={<LowStock />} />
-        <Route path="/stockTakePage" element={<StockTakePage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/inventory/add" element={<AddEditItem />} />
+          <Route path="/inventory/edit/:id" element={<AddEditItem />} />
+          <Route path="/inventory/:id" element={<ProductDetails />} />
+          <Route path="/lowStock" element={<LowStock />} />
+          <Route path="/stockTakePage" element={<StockTakePage />} />
 
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/transactions" element={<Transactions />} />
-        <Route path="/productDetails" element={<ProductDetails />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/transactions" element={<Transactions />} />
+        </Route>
       </Route>
 
       {/* Fallback */}

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function DashboardHeader({ search, setSearch, filteredSearch }) {
   return (
     <div>
-      <h1>Dashboard</h1>
+      {/* <h1>Dashboard</h1> Dashboard header located in layout.jsx*/}
       <p>Overview of current warehouse metrics</p>
       <div className="relative">
         <input
