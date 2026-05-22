@@ -11,7 +11,7 @@ export async function createOrder(data) {
   });
 }
 
-export async function getOrderById(id) {
+export async function getOrderDetails(id) {
   return apiClient(`/orders/${id}`);
 }
 
@@ -21,16 +21,21 @@ export async function deleteOrder(id) {
   });
 }
 
-export async function approveOrder(id, approval) {
+export async function approveOrder(id) {
   return apiClient(`/orders/${id}/approve`, {
     method: "PUT",
-    body: JSON.stringify(approval),
   });
 }
 
-export async function addItemsToOrder(id, itemId) {
+export async function receiveOrder(id) {
+  return apiClient(`/orders/${id}/receive`, {
+    method: "PUT",
+  });
+}
+
+export async function addItemsToOrder(id, data) {
   return apiClient(`/orders/${id}/items`, {
     method: "POST",
-    body: JSON.stringify(itemId),
+    body: JSON.stringify(data),
   });
 }

@@ -7,6 +7,8 @@ import Dashboard from "./pages/nav/dashboard";
 import Inventory from "./pages/nav/inventory";
 import LowStock from "./pages/nav/lowStock";
 import Orders from "./pages/nav/orders";
+import OrdersDetails from "./pages/orders/OrdersDetails.jsx";
+import AddOrder from "./pages/orders/AddOrder.jsx";
 import StockTakePage from "./pages/stockTakePage";
 import Transactions from "./pages/transactions";
 import Error404 from "./pages/error404.jsx";
@@ -39,6 +41,8 @@ function App() {
           <Route path="/stockTakePage" element={<StockTakePage />} />
 
           <Route path="/orders" element={<Orders />} />
+          <Route path="/orders/:id" element={<OrdersDetails />} />
+          <Route path="/orders/add/:itemId" element={<AddOrder />} />
           <Route path="/transactions" element={<Transactions />} />
         </Route>
       </Route>

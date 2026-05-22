@@ -44,15 +44,8 @@ router.post(
   requireBody(["name", "sku", "unit", "quantity", "low_stock_threshold"]),
   async (req, res, next) => {
     try {
-      const {
-        name,
-        description,
-        sku,
-        unit,
-        quantity,
-        low_stock_threshold,
-        item_photo,
-      } = req.body;
+      const { name, description, sku, unit, quantity, low_stock_threshold } =
+        req.body;
 
       const item = await createItem(
         name,
@@ -61,7 +54,6 @@ router.post(
         unit,
         quantity,
         low_stock_threshold,
-        item_photo || null,
         req.user.id,
       );
       // without initialize stock here, added items wont get tracked immediately.
@@ -80,15 +72,8 @@ router.put(
   requireBody(["name", "sku", "unit", "quantity", "low_stock_threshold"]),
   async (req, res, next) => {
     try {
-      const {
-        name,
-        description,
-        sku,
-        unit,
-        quantity,
-        low_stock_threshold,
-        item_photo,
-      } = req.body;
+      const { name, description, sku, unit, quantity, low_stock_threshold } =
+        req.body;
 
       const updated = await updateItem(
         req.item.id,
@@ -99,7 +84,6 @@ router.put(
         unit,
         quantity,
         low_stock_threshold,
-        item_photo || null,
       );
 
       res.json(updated);

@@ -50,13 +50,13 @@ export async function getAllItems(userId) {
 //   return items;
 // } ****would get all items from EVERY USER in the DB - big no!
 
-export async function getItemById(id) {
+export async function getItemById(id, userId) {
   const sql = `
     SELECT * FROM items WHERE id = $1 AND user_id = $2
     `;
   const {
     rows: [item],
-  } = await db.query(sql, [id]);
+  } = await db.query(sql, [id, userId]);
   return item;
 }
 
