@@ -4,7 +4,7 @@ export default function AttentionRequired({ lowStock }) {
   return (
     <div>
       {lowStock.length === 0 ? (
-        <p>No low sotck items to display. Nice!</p>
+        <p>No low stock items to display. Nice!</p>
       ) : (
         lowStock.map((item) => (
           <div key={item.id}>

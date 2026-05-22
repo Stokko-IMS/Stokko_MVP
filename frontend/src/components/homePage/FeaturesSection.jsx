@@ -48,18 +48,8 @@ export default function FeaturesSection() {
           </p>
           <img src="../assets/features4" alt="" />
         </div>
-        <div>
-          <h2>Automatic Audit Log Generation</h2>
-          <img src="../assets/features5" alt="" />
-          <p>
-            Every single time an item from your inventory or an order gets
-            entered, updated, or deleted, a log will be generated automatically.
-            This is perfect for making sure you have ultimate control over every
-            decision your company makes in regards to its inventory.
-          </p>
-        </div>
         <Link to="/register">Get Started Now</Link>
-        <div>
+        <>
           <h2>Future Stretch Goals</h2>
           <h3>Multi-Role and Location Integration</h3>
           <p>
@@ -97,7 +87,14 @@ export default function FeaturesSection() {
             their profile by item, and when an order gets approved, the user
             will have an option to send that order immediately
           </p>
-        </div>
+          <h2>Automatic Audit Log Generation</h2>
+          <p>
+            Every single time an item from your inventory or an order gets
+            entered, updated, or deleted, a log will be generated automatically.
+            This is perfect for making sure you have ultimate control over every
+            decision your company makes in regards to its inventory.
+          </p>
+        </>
       </div>
     </section>
   );
