@@ -4,6 +4,7 @@ import requireBody from "../middleware/requireBody.js";
 import {
   initializeStock,
   getInventoryStatus,
+  getLowStockItems,
 } from "../db/queries/inventory.js";
 import { getItemById } from "../db/queries/items.js";
 
@@ -16,6 +17,15 @@ router.use(requireUser);
 router.get("/", async (req, res, next) => {
   try {
     const status = await getInventoryStatus(req.user.id);
+    res.json(status);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/low-stock", async (req, res, next) => {
+  try {
+    const status = await getLowStockItems(req.user.id);
     res.json(status);
   } catch (err) {
     next(err);

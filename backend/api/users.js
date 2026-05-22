@@ -13,7 +13,7 @@ router.post(
       const { name, email, password, contact_number } = req.body;
       const user = await createUser(name, email, password, contact_number);
       const token = await createToken({ id: user.id });
-      res.status(201).json(token);
+      res.status(201).json({ token });
     } catch (err) {
       next(err);
     }
@@ -29,7 +29,7 @@ router.post(
       const user = await login(email, password);
       if (!user) return res.status(401).json("Invalid email or password.");
       const token = await createToken({ id: user.id });
-      res.json(token);
+      res.json({ token });
     } catch (err) {
       next(err);
     }

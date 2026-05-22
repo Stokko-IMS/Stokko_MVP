@@ -38,3 +38,24 @@ export async function getInventoryStatus(userId) {
   const { rows } = await db.query(sql, [userId]);
   return rows;
 }
+
+export async function getLowStockItems(userId) {
+  const sql = `
+  SELECT 
+    i.id AS inventory_id,
+    it.id AS item_id,
+    it.name,
+    it.sku,
+    it.unit,
+    it.quantity,
+    it.low_stock_threshold,
+    it.description,
+    (it.quantity <= it.low_stock_threshold) AS is_low_stock
+  FROM inventory i
+  JOIN items it ON i.item_id = it.id
+  WHERE i.user_id = $1
+  AND it.quantity <= it.low_stock_threshold
+  ORDER BY it.name ASC`;
+  const { rows } = await db.query(sql, [userId]);
+  return rows;
+}
