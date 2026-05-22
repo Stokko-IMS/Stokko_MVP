@@ -6,7 +6,7 @@ export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
 
-  const [error, tryRigister, isPending] = useActionState(
+  const [error, tryRegister, isPending] = useActionState(
     async (prevState, formData) => {
       // Extract variables directly matching your backend's requireBody payload
       const name = formData.get("name");

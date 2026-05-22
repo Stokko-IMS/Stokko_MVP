@@ -12,11 +12,12 @@ export function AuthProvider({ children }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),
     });
-    const result = await response.text();
+    const result = await response.json();
+
     if (!response.ok) {
       throw Error(result.message);
     }
-    localStorage.setItem("token", result);
+    localStorage.setItem("token", result.token);
     setToken(result.token);
   };
 
@@ -28,12 +29,12 @@ export function AuthProvider({ children }) {
     });
     console.log(response);
     // const result = await response.json();
-    const result = await response.text();
+    const result = await response.json();
+
     if (!response.ok) {
       throw Error(result.message);
     }
-    console.log(result);
-    localStorage.setItem("token", result);
+    localStorage.setItem("token", result.token);
     setToken(result.token);
   };
 
