@@ -13,7 +13,7 @@ export default function ContactUs() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    alert("Message sent!");
+    alert("Thank you! Message sent!");
 
     setTimeout(() => {
       navigate("/dashboard");
