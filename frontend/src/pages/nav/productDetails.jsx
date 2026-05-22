@@ -8,24 +8,45 @@ const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getItemById(id);
+    async function getItem() {
+      try {
+        const item = await getItemById(id);
+        setItem(item);
+      } catch (e) {
+        console.log(e);
+        setError("Failed to load item");
+      } finally {
+        setLoading(false);
+      }
+    }
+    getItem();
   }, [id]);
 
   const handleDelete = async () => {
     if (window.confirm("Are you sure?")) {
-      DeleteItem(id);
+      deleteItem(id);
       navigate("/inventory");
     }
   };
 
-  if (!item) return <p>Loading...</p>;
+  if (loading) return <p>loading...</p>;
+
+  if (error) return <p>{error}</p>;
 
   return (
     <div>
       <h1>{item.name}</h1>
+      <img src={`${item.item_photo}`} />
       <p>{item.description}</p>
+      <p>{item.sku}</p>
+      <p>
+        {item.quantity} {item.unit}
+      </p>
+      <p>{item.low_stock_threshold}</p>
       <Link to={`/inventory/edit/${id}`}>Edit this Item</Link>
       <button onClick={handleDelete}>Delete Item</button>
     </div>
