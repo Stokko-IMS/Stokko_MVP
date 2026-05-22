@@ -25,7 +25,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/error404" element={<Error404 />} />
-      <Route path="/contactUS" element={<ContactUs />} />
+      <Route path="/contactUs" element={<ContactUs />} />
 
       {/* Protected Routes */}
       <Route element={<ProtectedRoute />}>
