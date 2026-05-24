@@ -1,4 +1,4 @@
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 
@@ -34,7 +34,7 @@ export default function Register() {
     null,
   );
 
-  // Checks for duplicate emails "already exists"
+//   // Checks for duplicate emails "already exists"
   const isDuplicateEmail = error?.message?.toLowerCase().includes("exists");
 
   return (
@@ -101,3 +101,4 @@ export default function Register() {
     </main>
   );
 }
+
