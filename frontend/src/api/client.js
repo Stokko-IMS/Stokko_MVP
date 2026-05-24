@@ -12,7 +12,7 @@ export async function apiClient(endpoint, options = {}) {
     },
   });
 
-  const data = await res.json();
+  const data = res.status === 204 ? null : await res.json();
 
   if (!res.ok) {
     throw new Error(data.message || "Something went wrong");

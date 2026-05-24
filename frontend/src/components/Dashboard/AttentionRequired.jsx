@@ -9,7 +9,7 @@ export default function AttentionRequired({ lowStock }) {
         lowStock.map((item) => (
           <div key={item.id}>
             <Link to={`/inventory/${item.id}`}>
-              <img src={item.item_photo} alt={item.description} />
+              <img src="../../assets/item_photo.svg" alt="placeholder photo" />
               <h5>{item.name}</h5>
               <p>{`SKU: ${item.sku}`}</p>
               <p>{`Quantity: ${item.quantity}`}</p>

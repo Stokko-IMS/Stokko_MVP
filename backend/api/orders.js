@@ -9,6 +9,8 @@ import {
   getOrderById,
   deleteOrder,
   approveOrder,
+  receiveOrder,
+  getOrderDetails,
 } from "../db/queries/orders.js";
 import { addItemsToOrder } from "../db/queries/orderItems.js";
 
@@ -66,8 +68,13 @@ router.param("id", async (req, res, next, id) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
-  res.json(req.order);
+router.get("/:id", async (req, res, next) => {
+  try {
+    const orderDetails = await getOrderDetails(req.order.id, req.user.id);
+    res.json(orderDetails);
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.delete("/:id", async (req, res) => {
@@ -78,6 +85,12 @@ router.delete("/:id", async (req, res) => {
 router.put("/:id/approve", async (req, res) => {
   const updated = await approveOrder(req.user.id, req.order.id);
   if (!updated) return res.status(400).json("Order already approved");
+  res.status(200).json(updated);
+});
+
+router.put("/:id/receive", async (req, res) => {
+  const updated = await receiveOrder(req.order.id);
+  if (!updated) return res.status(400).json("Order already received");
   res.status(200).json(updated);
 });
 
