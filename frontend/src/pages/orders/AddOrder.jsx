@@ -53,6 +53,7 @@ export default function AddOrder() {
         supplier_email: form.supplier_email,
         status: "draft",
       });
+      console.log("CREATED ORDER:", order);
 
       await addItemsToOrder(order.id, {
         item_id: item.id,
@@ -86,6 +87,7 @@ export default function AddOrder() {
       <form onSubmit={handleSubmit}>
         <h2>Supplier Info</h2>
 
+      <label htmlFor="supplier_name">Supplier Name</label>
         <input
           name="supplier_name"
           placeholder="Supplier Name"
@@ -94,6 +96,7 @@ export default function AddOrder() {
           required
         />
 
+      <label htmlFor="supplier_email">Supplier Email</label>
         <input
           name="supplier_email"
           placeholder="Supplier Email"
@@ -104,6 +107,7 @@ export default function AddOrder() {
 
         <h2>Order Details</h2>
 
+      <label htmlFor="quantity">Quantity</label>
         <input
           name="quantity"
           type="number"
@@ -113,11 +117,13 @@ export default function AddOrder() {
           required
         />
 
+      <label htmlFor="price">Price </label>
         <input
           name="price"
           type="number"
           min="0"
           step="0.01"
+          placeholder="Please do not lead with $"
           value={form.price}
           onChange={handleChange}
           required

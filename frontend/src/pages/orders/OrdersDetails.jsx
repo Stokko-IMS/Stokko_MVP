@@ -80,7 +80,7 @@ export default function OrdersDetails() {
               alt="Item Photo Placeholder"
             />
             <p>Item: {row.item_name}</p>
-            <p>Description: {row.item.description}</p>
+            <p>Description: {row.description}</p>
             <p>Ordered Qty: {row.ordered_quantity}</p>
             <p>Price: {row.price}</p>
           </div>
@@ -98,13 +98,13 @@ export default function OrdersDetails() {
       <section>
         <h2>Actions</h2>
 
-        <button onClick={handleApprove} disable={order.status !== "draft"}>
+        <button onClick={handleApprove} disabled={order.status !== "draft"}>
           Approve Order
         </button>
-        <button onClick={handleReceive} disable={order.status !== "submitted"}>
+        <button onClick={handleReceive} disabled={order.status !== "submitted"}>
           Receive Order
         </button>
-        <button onClick={handleDelete} disable={order.status !== "draft"}>
+        <button onClick={handleDelete} disabled={order.status !== "draft"}>
           Delete Order
         </button>
       </section>

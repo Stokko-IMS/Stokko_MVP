@@ -27,7 +27,7 @@ export default function InventoryTable({ items, onEdit }) {
 
             <div>
               <button onClick={() => onEdit(item.id)}>Edit</button>
-              <Link to={`/orders/add`}>Create Order</Link>
+              <Link to={`/orders/add/${item.id}`}>Create Order</Link>
             </div>
           </div>
         );

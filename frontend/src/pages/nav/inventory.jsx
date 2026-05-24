@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAllItems } from "../../api/items";
-import InventoryHeader from "../../components/Inventory/InventoryHeader";
+import { getAllItems } from "../../api/items.js";
+import InventoryHeader from "../../components/Inventory_components/inventoryHeader";
 import InventoryTable from "../../components/Inventory_components/inventoryTable";
 
 export default function Inventory() {
