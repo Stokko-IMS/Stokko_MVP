@@ -96,7 +96,7 @@ export default function InventoryForm() {
       <form onSubmit={handleSubmit} className="form-panel">
         <div>
           <h1>{isEditMode ? "Edit Item" : "Add Item"}</h1>
-          <p className="mt-1 text-sm text-slate-600">
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
             {isEditMode
               ? "Update inventory item details."
               : "Create a new inventory item."}

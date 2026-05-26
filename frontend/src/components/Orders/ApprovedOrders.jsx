@@ -30,7 +30,7 @@ export default function ApprovedOrders({ approvedOrders }) {
 
                 <div className="min-w-0 flex-1">
                   <h5 className="font-bold">Order: {order.id}</h5>
-                  <p className="font-mono text-xs text-slate-600">
+                  <p className="font-mono text-xs text-slate-600 dark:text-slate-300">
                     Status: {order.status}
                   </p>
                   <span className="rounded-full bg-slate-200 px-2 py-1 text-xs font-bold text-slate-700">

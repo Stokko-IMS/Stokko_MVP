@@ -151,7 +151,6 @@
 // }
 
 // ======================== TEST 2 Matt =====================
-import React from "react";
 import Item_photo from "../../assets/Item_photo.svg";
 import { Link } from "react-router-dom";
 
@@ -176,12 +175,12 @@ export default function InventoryTable({ items, onEdit }) {
               {/* 2. Content Wrapper: Keeps name and the info column next to each other */}
               <div className="flex flex-row items-start gap-8 min-w-0">
                 {/* Product Name */}
-                <h3 className="text-sm font-bold text-deep truncate max-w-[140px] pt-0.5">
+                <h3 className="text-sm font-bold text-deep dark:text-slate-100 truncate max-w-[140px] pt-0.5">
                   {item.name}
                 </h3>
 
                 {/* Meta Attributes: Stacked vertically in column form, to the right of the name */}
-                <div className="flex flex-col gap-0.5 text-[11px] text-slate-600 shrink-0">
+                <div className="flex flex-col gap-0.5 text-[11px] text-slate-600 dark:text-slate-300 shrink-0">
                   <div>
                     <span className="font-semibold text-slate-400 font-mono">
                       SKU:
@@ -194,7 +193,7 @@ export default function InventoryTable({ items, onEdit }) {
                   </div>
                   <div>
                     <span className="font-semibold text-slate-400">Qty:</span>{" "}
-                    <span className="font-mono font-bold text-deep">
+                    <span className="font-mono font-bold text-deep dark:text-slate-100">
                       {item.quantity}
                     </span>
                   </div>
@@ -219,13 +218,13 @@ export default function InventoryTable({ items, onEdit }) {
               <div className="flex items-center gap-1">
                 <button
                   onClick={() => onEdit(item.id)}
-                  className="px-2 py-1 text-xs font-bold rounded-stokko border border-slate-300 bg-white text-deep hover:bg-deep hover:text-white transition cursor-pointer"
+                  className="px-2 py-1 text-xs font-bold rounded-stokko border border-slate-300 bg-white text-deep dark:text-slate-750 hover:bg-deep hover:text-white transition cursor-pointer"
                 >
                   Edit
                 </button>
                 <Link
                   to={`/orders/add/${item.id || item.item_id}`}
-                  className="inline-flex items-center justify-center h-8 w-16 text-sm font-medium text-deep bg-amber-500 rounded-md shadow-sm hover:bg-amber-600 transition-colors duration-200 no-underline"
+                  className="inline-flex items-center justify-center h-8 w-16 text-sm font-medium text-deep dark:text-slate-100 bg-amber-500 rounded-md shadow-sm hover:bg-amber-600 transition-colors duration-200 no-underline"
                 >
                   Order
                 </Link>

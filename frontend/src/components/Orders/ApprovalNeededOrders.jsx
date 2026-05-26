@@ -28,7 +28,7 @@ export default function ApprovalNeededOrders({ approvalNeededOrders }) {
 
                 <div className="min-w-0 flex-1">
                   <h5 className="font-bold">Order: {order.id}</h5>
-                  <p className="font-mono text-xs text-slate-600">
+                  <p className="font-mono text-xs text-slate-600 dark:text-slate-300">
                     Status: {order.status}
                   </p>
                   <span className="badge-low mt-2">Needs Review</span>

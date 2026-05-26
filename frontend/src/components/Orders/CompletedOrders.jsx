@@ -12,7 +12,7 @@ export default function CompletedOrders({ completedOrders }) {
       <div className="grid gap-3">
         {completedOrders.length === 0 ? (
           <div className="card">
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               No completed orders to display.
             </p>
           </div>
@@ -28,7 +28,7 @@ export default function CompletedOrders({ completedOrders }) {
 
                 <div className="min-w-0 flex-1">
                   <h5 className="font-bold">Order: {order.id}</h5>
-                  <p className="font-mono text-xs text-slate-600">
+                  <p className="font-mono text-xs text-slate-600 dark:text-slate-300">
                     Status: {order.status}
                   </p>
                   <span className="badge-good mt-2">Received</span>

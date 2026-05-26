@@ -167,10 +167,10 @@ export default function LowStock() {
   return (
     <main className="grid gap-5">
       {/* 1. Header Block Container */}
-      <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6 bg-white p-4 rounded-stokko border border-slate-200 shadow-sm">
+      <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6 p-4 rounded-stokko bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
         <div className="flex flex-col gap-1.5 shrink-0 text-left">
           <div className="w-fit border-b-2 border-amber pb-0.5">
-            <h1 className="text-xl font-extrabold tracking-tight text-deep m-0 leading-none">
+            <h1 className="text-xl font-extrabold tracking-tight text-deep dark:text-slate-100 m-0 leading-none">
               Stock Alerts
             </h1>
           </div>
@@ -179,7 +179,10 @@ export default function LowStock() {
           </p>
         </div>
 
-        <div className="relative w-full md:flex-1 md:max-w-md md:mx-auto">
+        <div
+          className="relative w-full md:flex-1 md:max-w-md md:mx-auto"
+          onBlur={() => setTimeout(() => setSearch(""), 150)}
+        >
           <Search
             size={16}
             className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
@@ -192,13 +195,13 @@ export default function LowStock() {
             className="pl-9 w-full"
           />
           {search && filteredItems.length > 0 && (
-            <div className="absolute left-0 top-full z-50 mt-1 w-full rounded-stokko border border-slate-200 bg-white shadow-lg">
+            <div className="absolute left-0 top-full z-50 mt-1 w-full rounded-stokko bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-lg">
               {filteredItems.slice(0, 5).map((item) => (
                 <Link
                   key={item.item_id}
                   to={`/inventory/${item.item_id}`}
                   onClick={() => setSearch("")}
-                  className="block px-3 py-2 text-sm font-medium text-deep transition hover:bg-slate-100"
+                  className="block px-3 py-2 text-sm font-medium text-deep dark:text-slate-100 dark:hover:bg-slate-800 transition hover:bg-slate-100"
                 >
                   {item.name}
                 </Link>
@@ -224,7 +227,7 @@ export default function LowStock() {
       <section className="mt-2 text-left">
         <div className="mb-3">
           {/* Matches the text-xl heading size of your Critical Alerts */}
-          <h2 className="text-xl font-bold tracking-tight text-deep m-0">
+          <h2 className="text-xl font-bold tracking-tight text-deep dark:text-slate-100 m-0">
             Stock Activity Ledger
           </h2>
           {/* Clean 4-word UX/UI description */}
