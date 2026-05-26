@@ -61,11 +61,16 @@ export default function LowStock() {
 
   const visibleItems = showAll ? filteredItems : filteredItems.slice(0, 5);
 
-  if (loading) return <p>Loading alerts...</p>;
+  if (loading)
+    return (
+      <div className="card">
+        <p className="animate-pulse text-sm text-slate-500">Loading...</p>
+      </div>
+    );
   if (error) return <p>{error}</p>;
 
   return (
-    <main>
+    <main className="grid gap-5">
       <input
         type="text"
         placeholder="Search alerts..."
@@ -78,7 +83,7 @@ export default function LowStock() {
       <CriticalAlerts items={visibleItems} onMute={muteItem} />
 
       {filteredItems.length > 5 && (
-        <button onClick={() => setShowAll(!showAll)}>
+        <button onClick={() => setShowAll(!showAll)} className="btn-secondary">
           {showAll ? "Show less" : `View all ${filteredItems.length} alerts`}
         </button>
       )}

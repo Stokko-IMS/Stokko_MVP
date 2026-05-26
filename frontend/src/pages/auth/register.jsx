@@ -40,10 +40,15 @@ export default function Register() {
     typeof error === "string" && error.toLowerCase().includes("exists");
 
   return (
-    <main>
-      <h1>Create Your Account</h1>
+    <main className="min-h-screen bg-warehouse px-4 py-10">
+      <form action={tryRegister} className="form-panel">
+        <div>
+          <h1>Create Your Account</h1>
+          <p className="mt-1 text-sm text-slate-600">
+            Start managing inventory with Stokko.
+          </p>
+        </div>
 
-      <form action={tryRegister}>
         <label>
           Name *
           <input
@@ -61,67 +66,68 @@ export default function Register() {
         </label>
 
         <label>
-          Contact Number (Optional)
+          Contact Number
           <input type="tel" name="contact_number" autoComplete="tel" />
         </label>
 
-        {/* <label>
-          Password *
-          <input
-            type="password"
-            name="password"
-            autoComplete="new-password"
-            required
-          />
-        </label> */}
-
-        {/* add confirm password post MVP */}
-
-        {/*Eye on / Eye off */}
         <label>
           Password *
-          <div>
+          <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
               name="password"
               autoComplete="new-password"
               required
+              className="pr-10"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
               aria-label={showPassword ? "Hide password" : "Show password"}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
             >
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
           </div>
         </label>
 
-        {/* Portfolio Security Note */}
-        <div>
+        <div className="rounded-stokko border border-slate-200 bg-slate-50 p-3 text-sm text-slate-600">
           <p>
-            <strong>🔒 Portfolio Note:</strong> For this MVP capstone, we
-            support inclusive password options. Users are responsible for
-            choosing strong passwords.
+            <strong>Portfolio Note:</strong> For this MVP capstone, users are
+            responsible for choosing strong passwords.
           </p>
         </div>
 
-        <button type="submit" disabled={isPending}>
+        <button
+          type="submit"
+          disabled={isPending}
+          className="btn-primary w-full"
+        >
           {isPending ? "Creating account..." : "Register"}
         </button>
 
-        {error && !isDuplicateEmail && <p role="alert">{error}</p>}
-
-        {isDuplicateEmail && (
-          <p role="alert">
-            Email already exists. <Link to="/login">Click here to login.</Link>
+        {error && !isDuplicateEmail && (
+          <p role="alert" className="text-sm font-bold text-red-600">
+            {error}
           </p>
         )}
-      </form>
 
-      <p>
-        Already have an account? <Link to="/login">Login here.</Link>
-      </p>
+        {isDuplicateEmail && (
+          <p role="alert" className="text-sm text-red-600">
+            Email already exists.{" "}
+            <Link to="/login" className="font-bold underline">
+              Click here to login.
+            </Link>
+          </p>
+        )}
+
+        <p className="text-center text-sm text-slate-600">
+          Already have an account?{" "}
+          <Link to="/login" className="font-bold text-deep hover:text-amber">
+            Login here.
+          </Link>
+        </p>
+      </form>
     </main>
   );
 }

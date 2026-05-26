@@ -29,66 +29,74 @@ export default function Login() {
   );
 
   return (
-    <main>
-      <h1>Login</h1>
-
-      {/* Error banner on invalid credentials */}
-      {error && (
-        <div role="alert" style={{ border: "1px solid red", padding: "10px" }}>
-          <strong>Login Failed:</strong> {error}
+    <main className="min-h-screen bg-warehouse px-4 py-10">
+      <form action={tryLogin} className="form-panel">
+        <div>
+          <h1>Login</h1>
+          <p className="mt-1 text-sm text-slate-600">
+            Access your Stokko inventory dashboard.
+          </p>
         </div>
-      )}
 
-      <form action={tryLogin}>
+        {error && (
+          <div
+            role="alert"
+            className="rounded-stokko border border-red-300 bg-red-50 p-3 text-sm text-red-700"
+          >
+            <strong>Login Failed:</strong> {error}
+          </div>
+        )}
+
         <label>
           Email Address *
           <input type="email" name="email" autoComplete="email" required />
         </label>
 
-        {/* <label>
-          Password *
-          <input
-            type="password"
-            name="password"
-            autoComplete="current-password"
-            required
-          />
-        </label> */}
-
-        {/* adding in showPassword on/off with Eye from lucide-react */}
         <label>
           Password *
-          <div>
+          <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
               name="password"
               autoComplete="current-password"
               required
+              className="pr-10"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
             >
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
           </div>
         </label>
 
-        {/* Forgot password link (UI only for MVP) */}
-        <p>
-          <Link to="#" onClick={(e) => e.preventDefault()}>
+        <p className="text-right text-sm">
+          <Link
+            to="#"
+            onClick={(e) => e.preventDefault()}
+            className="font-bold text-deep hover:text-amber"
+          >
             Forgot Password?
           </Link>
         </p>
 
-        <button type="submit" disabled={isPending}>
+        <button
+          type="submit"
+          disabled={isPending}
+          className="btn-primary w-full"
+        >
           {isPending ? "Logging in..." : "Login"}
         </button>
-      </form>
 
-      <p>
-        Don't have an account yet? <Link to="/register">Register here.</Link>
-      </p>
+        <p className="text-center text-sm text-slate-600">
+          Don't have an account yet?{" "}
+          <Link to="/register" className="font-bold text-deep hover:text-amber">
+            Register here.
+          </Link>
+        </p>
+      </form>
     </main>
   );
 }

@@ -43,7 +43,11 @@ export default function Orders() {
     orders?.filter((order) => order.status === "received") || [];
 
   if (loading) {
-    return <p>Loading Orders...</p>;
+    return (
+  <div className="card">
+    <p className="animate-pulse text-sm text-slate-500">Loading...</p>
+  </div>
+);
   }
 
   if (error) {
@@ -51,7 +55,7 @@ export default function Orders() {
   }
 
   return (
-    <main>
+    <main className="grid gap-5">
       <OrdersHeader
         filteredSearch={filteredSearch}
         search={search}

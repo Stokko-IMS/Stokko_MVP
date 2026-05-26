@@ -69,23 +69,45 @@ export default function AddOrder() {
     }
   }
 
-  if (loading) return <p>Loading order form...</p>;
+  if (loading)
+    return (
+      <div className="card">
+        <p className="animate-pulse text-sm text-slate-500">Loading...</p>
+      </div>
+    );
   if (error) return <p>{error}</p>;
 
   return (
-    <main>
-      <h1>Create Order</h1>
+    <main className="grid gap-5">
+      <div>
+        <h1>Create Order</h1>
+        <p className="mt-1 text-sm text-slate-600">
+          Generate a supplier order for this inventory item.
+        </p>
+      </div>
 
-      <section>
-        <h2>Item</h2>
-        <img src={Item_photo} alt="Item Photo Placeholder" />
-        <p>Name: {item.name}</p>
-        <p>Description: {item.description}</p>
-        <p>Current Stock: {item.quantity}</p>
-        <p>Low Stock Threshold: {item.low_stock_threshold}</p>
+      <section className="card">
+        <h2 className="mb-3">Item</h2>
+
+        <div className="item-row">
+          <img
+            src={Item_photo}
+            alt="Item Photo Placeholder"
+            className="item-img"
+          />
+
+          <div className="min-w-0 flex-1 text-sm">
+            <p className="font-bold">{item.name}</p>
+            <p className="text-slate-600">{item.description}</p>
+            <p className="font-mono">Current Stock: {item.quantity}</p>
+            <p className="font-mono">
+              Low Stock Threshold: {item.low_stock_threshold}
+            </p>
+          </div>
+        </div>
       </section>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-panel">
         <h2>Supplier Info</h2>
 
         <label htmlFor="supplier_name">Supplier Name</label>
@@ -100,13 +122,33 @@ export default function AddOrder() {
         <label htmlFor="supplier_email">Supplier Email</label>
         <input
           name="supplier_email"
-          placeholder="Supplier Email"
+          type="email"
+          placeholder="supplier@example.com"
           value={form.supplier_email}
           onChange={handleChange}
           required
         />
 
-        <h2>Order Details</h2>
+        <label htmlFor="subject">Subject</label>
+        <input
+          name="subject"
+          type="text"
+          placeholder="Subject"
+          value={form.subject}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="comment">Comment</label>
+        <textarea
+          name="comment"
+          placeholder="Comment...."
+          value={form.comment}
+          onChange={handleChange}
+          required
+        />
+
+        <h2 className="pt-2">Order Details</h2>
 
         <label htmlFor="quantity">Quantity</label>
         <input
@@ -118,19 +160,21 @@ export default function AddOrder() {
           required
         />
 
-        <label htmlFor="price">Price </label>
+        <label htmlFor="price">Price</label>
         <input
           name="price"
           type="number"
           min="0"
           step="0.01"
-          placeholder="Please do not lead with $"
+          placeholder="Do not include $"
           value={form.price}
           onChange={handleChange}
           required
         />
 
-        <button type="submit">Create Order</button>
+        <button type="submit" className="btn-primary w-full">
+          Create Order
+        </button>
       </form>
     </main>
   );

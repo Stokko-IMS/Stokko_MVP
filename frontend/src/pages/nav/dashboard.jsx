@@ -54,7 +54,11 @@ export default function Dashboard() {
     : [];
 
   if (loading) {
-    return <p>Loading Dashboard...</p>;
+    return (
+      <div className="card">
+        <p className="animate-pulse text-sm text-slate-500">Loading...</p>
+      </div>
+    );
   }
 
   if (error) {
@@ -62,7 +66,7 @@ export default function Dashboard() {
   }
 
   return (
-    <main>
+    <main className="grid gap-5">
       {showSuccess && location.state?.message && (
         <div role="alert">
           <p>{location.state.message}</p>

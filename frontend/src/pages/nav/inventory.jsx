@@ -41,7 +41,7 @@ export default function Inventory() {
     });
 
   return (
-    <main>
+    <main className="grid gap-5">
       <InventoryHeader
         filteredItems={filteredItems}
         filter={filter}

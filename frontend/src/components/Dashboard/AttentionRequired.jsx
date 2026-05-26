@@ -3,23 +3,44 @@ import Item_photo from "../../assets/Item_photo.svg";
 
 export default function AttentionRequired({ lowStock }) {
   return (
-    <div>
+    <section>
+      <h2 className="section-title">Attention Required</h2>
+
       {lowStock.length === 0 ? (
-        <p>No low stock items to display. Nice!</p>
+        <div className="card">
+          <p>No low stock items to display. Nice!</p>
+        </div>
       ) : (
-        lowStock.map((item) => (
-          <div key={item.id}>
-            <Link to={`/inventory/${item.item_id}`}>
-              <img src={Item_photo} alt="placeholder photo" />
-              <h5>{item.name}</h5>
-              <p>{`SKU: ${item.sku}`}</p>
-              <p>{`Quantity: ${item.quantity}`}</p>
-              <span>Low Stock</span>{" "}
-              {/*This will be our low stock badge, i dont know if span is the correct tag to use here*/}
+        <div className="grid gap-3">
+          {lowStock.map((item) => (
+            <Link
+              key={item.id}
+              to={`/inventory/${item.item_id}`}
+              className="item-card block hover:border-amber"
+            >
+              <div className="item-row">
+                <img
+                  src={Item_photo}
+                  alt="placeholder photo"
+                  className="item-img"
+                />
+
+                <div className="min-w-0 flex-1">
+                  <h5 className="font-bold">{item.name}</h5>
+                  <p className="font-mono text-xs text-slate-600">
+                    SKU: {item.sku}
+                  </p>
+                  <p className="font-mono text-xs text-slate-600">
+                    Quantity: {item.quantity}
+                  </p>
+                </div>
+
+                <span className="badge-low">Low Stock</span>
+              </div>
             </Link>
-          </div>
-        ))
+          ))}
+        </div>
       )}
-    </div>
+    </section>
   );
 }

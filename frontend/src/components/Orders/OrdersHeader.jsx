@@ -2,10 +2,14 @@ import { Link } from "react-router-dom";
 
 export default function OrdersHeader({ search, setSearch, filteredSearch }) {
   return (
-    <div>
-      {/* <h1>Orders</h1> Orders header located in layout.jsx*/}
-      <p>Overview of current warehouse orders</p>
-      <div className="relative">
+    <section className="page-header">
+      <div>
+        <p className="text-sm text-slate-600">
+          Overview of current warehouse orders
+        </p>
+      </div>
+
+      <div className="relative w-full md:max-w-sm">
         <input
           type="text"
           placeholder="Search orders..."
@@ -13,23 +17,21 @@ export default function OrdersHeader({ search, setSearch, filteredSearch }) {
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        {/* This chunk of code was suggested from chatGPT & adjusted to fit our props */}
         {search && filteredSearch.length > 0 && (
-          <div className="absolute top-full left-0 w-full bg-white border rounded-md shadow-md z-50">
-            {" "}
-            {/* classname for dropdown searchbar */}
+          <div className="absolute top-full left-0 z-50 mt-1 w-full rounded-stokko border border-slate-200 bg-white shadow-md">
             {filteredSearch.map((order) => (
               <Link
                 key={order.id}
                 to={`/orders/${order.id}`}
                 onClick={() => setSearch("")}
+                className="block px-3 py-2 text-sm hover:bg-slate-100"
               >
-                <div>Order: {order.id}</div>
+                Order: {order.id}
               </Link>
             ))}
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

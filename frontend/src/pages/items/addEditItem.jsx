@@ -84,78 +84,92 @@ export default function InventoryForm() {
     });
   }
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div className="card">
+        <p className="animate-pulse text-sm text-slate-500">Loading...</p>
+      </div>
+    );
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>{isEditMode ? "Edit Item" : "Add Item"}</h1>
+    <main className="grid gap-5">
+      <form onSubmit={handleSubmit} className="form-panel">
+        <div>
+          <h1>{isEditMode ? "Edit Item" : "Add Item"}</h1>
+          <p className="mt-1 text-sm text-slate-600">
+            {isEditMode
+              ? "Update inventory item details."
+              : "Create a new inventory item."}
+          </p>
+        </div>
 
-      <label htmlFor="name">Name</label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Name"
-      />
+        <label htmlFor="name">Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Name"
+        />
 
-      <label htmlFor="description">Description</label>
-      <input
-        id="description"
-        name="description"
-        type="text"
-        value={formData.description}
-        onChange={handleChange}
-        placeholder="Description"
-      />
+        <label htmlFor="description">Description</label>
+        <input
+          id="description"
+          name="description"
+          type="text"
+          value={formData.description}
+          onChange={handleChange}
+          placeholder="Description"
+        />
 
-      <label htmlFor="sku">SKU</label>
-      <input
-        id="sku"
-        name="sku"
-        type="text"
-        value={formData.sku}
-        onChange={handleChange}
-        placeholder="SKU"
-      />
+        <label htmlFor="sku">SKU</label>
+        <input
+          id="sku"
+          name="sku"
+          type="text"
+          value={formData.sku}
+          onChange={handleChange}
+          placeholder="SKU"
+        />
 
-      <label htmlFor="quantity">Quantity</label>
-      <input
-        id="quantity"
-        name="quantity"
-        type="number"
-        min="0"
-        value={formData.quantity}
-        onChange={handleChange}
-        placeholder="Quantity"
-      />
+        <label htmlFor="quantity">Quantity</label>
+        <input
+          id="quantity"
+          name="quantity"
+          type="number"
+          min="0"
+          value={formData.quantity}
+          onChange={handleChange}
+          placeholder="Quantity"
+        />
 
-      <label htmlFor="unit">Unit</label>
-      <input
-        id="unit"
-        name="unit"
-        type="text"
-        value={formData.unit}
-        onChange={handleChange}
-        placeholder="Unit"
-      />
+        <label htmlFor="unit">Unit</label>
+        <input
+          id="unit"
+          name="unit"
+          type="text"
+          value={formData.unit}
+          onChange={handleChange}
+          placeholder="Unit"
+        />
 
-      <label htmlFor="low_stock_threshold">Low Stock Threshold</label>
-      <input
-        id="low_stock_threshold"
-        name="low_stock_threshold"
-        type="number"
-        min="0"
-        value={formData.low_stock_threshold}
-        onChange={handleChange}
-        placeholder="Low Stock Threshold"
-      />
+        <label htmlFor="low_stock_threshold">Low Stock Threshold</label>
+        <input
+          id="low_stock_threshold"
+          name="low_stock_threshold"
+          type="number"
+          min="0"
+          value={formData.low_stock_threshold}
+          onChange={handleChange}
+          placeholder="Low Stock Threshold"
+        />
 
-      <button type="submit" disabled={loading}>
-        <Save size={16} />
-        {isEditMode ? "Update Item" : "Create Item"}
-      </button>
-    </form>
+        <button type="submit" disabled={loading} className="btn-primary w-full">
+          <Save size={16} />
+          {isEditMode ? "Update Item" : "Create Item"}
+        </button>
+      </form>
+    </main>
   );
 }
