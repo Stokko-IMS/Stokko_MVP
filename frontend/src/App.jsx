@@ -21,7 +21,7 @@ function App() {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/error404" element={<Error404 />} />
@@ -41,8 +41,8 @@ function App() {
           <Route path="/stockTakePage" element={<StockTakePage />} />
 
           <Route path="/orders" element={<Orders />} />
-          <Route path="/orders/:id" element={<OrdersDetails />} />
           <Route path="/orders/add/:itemId" element={<AddOrder />} />
+          <Route path="/orders/:id" element={<OrdersDetails />} />
           <Route path="/transactions" element={<Transactions />} />
         </Route>
       </Route>

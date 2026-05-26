@@ -87,7 +87,7 @@ export default function AddOrder() {
       <form onSubmit={handleSubmit}>
         <h2>Supplier Info</h2>
 
-      <label htmlFor="supplier_name">Supplier Name</label>
+        <label htmlFor="supplier_name">Supplier Name</label>
         <input
           name="supplier_name"
           placeholder="Supplier Name"
@@ -96,7 +96,7 @@ export default function AddOrder() {
           required
         />
 
-      <label htmlFor="supplier_email">Supplier Email</label>
+        <label htmlFor="supplier_email">Supplier Email</label>
         <input
           name="supplier_email"
           placeholder="Supplier Email"
@@ -107,7 +107,7 @@ export default function AddOrder() {
 
         <h2>Order Details</h2>
 
-      <label htmlFor="quantity">Quantity</label>
+        <label htmlFor="quantity">Quantity</label>
         <input
           name="quantity"
           type="number"
@@ -117,7 +117,7 @@ export default function AddOrder() {
           required
         />
 
-      <label htmlFor="price">Price </label>
+        <label htmlFor="price">Price </label>
         <input
           name="price"
           type="number"

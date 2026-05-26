@@ -1,4 +1,4 @@
-import PublicNavbar from "../components/publicNavbar";
+import PublicNavbar from "../components/PublicNavbar";
 import Hero from "../components/homePage/Hero";
 import FeaturesSection from "../components/homePage/FeaturesSection";
 import Footer from "../components/Footer";
