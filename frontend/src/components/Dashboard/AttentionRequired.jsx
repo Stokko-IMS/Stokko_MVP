@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Item_photo from "../../assets/Item_photo.svg";
 
 export default function AttentionRequired({ lowStock }) {
   return (
@@ -9,7 +10,7 @@ export default function AttentionRequired({ lowStock }) {
         lowStock.map((item) => (
           <div key={item.id}>
             <Link to={`/inventory/${item.item_id}`}>
-              <img src="../../assets/item_photo.svg" alt="placeholder photo" />
+              <img src={Item_photo} alt="placeholder photo" />
               <h5>{item.name}</h5>
               <p>{`SKU: ${item.sku}`}</p>
               <p>{`Quantity: ${item.quantity}`}</p>

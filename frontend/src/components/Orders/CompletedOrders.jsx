@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Item_photo from "../../assets/Item_photo.svg";
 
 export default function CompletedOrders({ completedOrders }) {
   return (
@@ -11,10 +12,7 @@ export default function CompletedOrders({ completedOrders }) {
           completedOrders.map((order) => (
             <div key={order.id}>
               <Link to={`/orders/${order.id}`}>
-                <img
-                  src="../../assets/item_photo.svg"
-                  alt="placeholder photo"
-                />
+                <img src={Item_photo} alt="placeholder photo" />
                 <h5>Order: {order.id}</h5>
                 <p>Status: {order.status}</p>
               </Link>

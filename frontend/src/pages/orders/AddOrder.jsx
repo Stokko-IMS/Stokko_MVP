@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { getItemById } from "../../api/items";
 import { createOrder, addItemsToOrder } from "../../api/orders";
+import Item_photo from "../../assets/Item_photo.svg";
 
 export default function AddOrder() {
   const { itemId } = useParams();
@@ -77,7 +78,7 @@ export default function AddOrder() {
 
       <section>
         <h2>Item</h2>
-        <img src="../../assets/item_photo.svg" alt="Item Photo Placeholder" />
+        <img src={Item_photo} alt="Item Photo Placeholder" />
         <p>Name: {item.name}</p>
         <p>Description: {item.description}</p>
         <p>Current Stock: {item.quantity}</p>
