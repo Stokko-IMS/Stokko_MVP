@@ -3,6 +3,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getItemById, deleteItem } from "../../api/items.js";
+import Item_photo from "../../assets/Item_photo.svg";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -51,7 +52,7 @@ const ProductDetails = () => {
   return (
     <div>
       <h1>{item.name}</h1>
-      <img src={`${item.item_photo}`} />
+      <img src={Item_photo} />
       <p>{item.description}</p>
       <p>{item.sku}</p>
       <p>

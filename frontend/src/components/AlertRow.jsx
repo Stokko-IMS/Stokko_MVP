@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { AlertTriangle, BellOff } from "lucide-react";
+import Item_photo from "../assets/Item_photo.svg";
 
-export default function AlertRow({ item, onMute, onGeneratePO }) {
+export default function AlertRow({ item, onMute }) {
   const isCritical =
     item.quantity === 0 || item.quantity / item.low_stock_threshold < 0.25;
 
   return (
     <div>
       <div>
+        <img src={Item_photo} alt="Item photo placeholder" />
         <p>{item.name}</p>
         <p>SKU: {item.sku}</p>
         <p>

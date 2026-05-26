@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom";
+import Stokko_features_1 from "../../assets/Stokko_features_1.jpg";
+import Stokko_features_2 from "../../assets/Stokko_features_2.jpg";
+import Stokko_features_3 from "../../assets/Stokko_features_3.jpg";
+import Stokko_features_4 from "../../assets/Stokko_features_4.jpg";
 
 export default function FeaturesSection() {
   return (
@@ -7,7 +11,7 @@ export default function FeaturesSection() {
       <div>
         <div>
           <h2>Mobile First Design</h2>
-          <img src="../assets/features1" alt="" />
+          <img src={Stokko_features_1} alt="" />
           <p>
             At Stokko, we know how much you are on the go as a business owner.
             Becasue of that, we've designed our app to be used primarily from
@@ -25,11 +29,11 @@ export default function FeaturesSection() {
             all of its pertinent information such as: an image of the item, it's
             name, sku number, and quantity.
           </p>
-          <img src="../assets/features2" alt="" />
+          <img src={Stokko_features_2} alt="" />
         </div>
         <div>
           <h2>Low-Stock Threshold</h2>
-          <img src="../assets/features3" alt="" />
+          <img src={Stokko_features_3} alt="" />
           <p>
             With Stokko, you can also set a "low-stock threshold" to every
             single item. When the item quantity hits its low-stock threshold, an
@@ -46,7 +50,7 @@ export default function FeaturesSection() {
             for auditing, view current orders that have been accepted, or view
             orders that still need approval.
           </p>
-          <img src="../assets/features4" alt="" />
+          <img src={Stokko_features_4} alt="" />
         </div>
         <Link to="/register">Get Started Now</Link>
         <>

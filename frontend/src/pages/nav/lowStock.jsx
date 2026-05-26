@@ -12,7 +12,6 @@ export default function LowStock() {
   const [error, setError] = useState(null);
   const [showAll, setShowAll] = useState(false);
   const [muted, setMuted] = useState({});
-  const [poItem, setPoItem] = useState(null);
   const [search, setSearch] = useState("");
 
   useEffect(() => {

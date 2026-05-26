@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Item_photo from "../../assets/Item_photo.svg";
 
 export default function InventoryTable({ items, onEdit }) {
   if (items.length === 0) {
@@ -16,7 +17,7 @@ export default function InventoryTable({ items, onEdit }) {
         return (
           <div key={item.id} data-low={isLowStock}>
             <Link to={`/inventory/${item.id}`}>
-              <img src="../../assets/item_photo.svg" alt="placeholder photo" />
+              <img src={Item_photo} alt="placeholder photo" />
               <h5>{item.name}</h5>
               <p>{`SKU: ${item.sku}`}</p>
               <p>{`Unit: ${item.unit}`}</p>

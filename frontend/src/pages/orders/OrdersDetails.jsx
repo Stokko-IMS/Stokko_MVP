@@ -11,6 +11,7 @@ import {
   receiveOrder,
   deleteOrder,
 } from "../../api/orders";
+import Item_photo from "../../assets/Item_photo.svg";
 
 export default function OrdersDetails() {
   const { id } = useParams();
@@ -77,10 +78,7 @@ export default function OrdersDetails() {
 
         {orderRows.map((row) => (
           <div key={row.order_item_id}>
-            <img
-              src="../../assets/item_photo.svg"
-              alt="Item Photo Placeholder"
-            />
+            <img src={Item_photo} alt="Item Photo Placeholder" />
             <p>Item: {row.item_name}</p>
             <p>Description: {row.description}</p>
             <p>Ordered Qty: {row.ordered_quantity}</p>
