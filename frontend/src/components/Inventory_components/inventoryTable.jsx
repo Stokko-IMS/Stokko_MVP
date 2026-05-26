@@ -152,80 +152,87 @@
 
 // ======================== TEST 2 Matt =====================
 import React from "react";
+import Item_photo from "../../assets/Item_photo.svg";
+import { Link } from "react-router-dom";
 
 export default function InventoryTable({ items, onEdit }) {
   return (
-    <div className="grid gap-3 w-full">
+    <div className="grid gap-3 w-full hover:cursor-pointer">
       {items.map((item) => (
-        <div
-          key={item.id || item.sku}
-          className="item-card flex flex-row items-center justify-between gap-4 p-3 min-h-[75px] w-full"
-        >
-          {/* LEFT CONTAINER: Image + (Name & Metadata Group Side-by-Side) */}
-          <div className="flex items-center gap-4 min-w-0 flex-1">
-            {/* 1. Product Image */}
-            <img
-              src={item.image || "https://via.placeholder.com/56"}
-              alt={item.name}
-              className="item-img shrink-0"
-            />
+        <Link to={`/inventory/${item.id}`}>
+          <div
+            key={item.id || item.sku}
+            className="item-card flex flex-row items-center justify-between gap-4 p-3 min-h-[75px] w-full"
+          >
+            {/* LEFT CONTAINER: Image + (Name & Metadata Group Side-by-Side) */}
+            <div className="flex items-center gap-4 min-w-0 flex-1">
+              {/* 1. Product Image */}
+              <img
+                src={Item_photo}
+                alt="Item photo placeholder"
+                className="item-img shrink-0"
+              />
 
-            {/* 2. Content Wrapper: Keeps name and the info column next to each other */}
-            <div className="flex flex-row items-start gap-8 min-w-0">
-              {/* Product Name */}
-              <h3 className="text-sm font-bold text-deep truncate max-w-[140px] pt-0.5">
-                {item.name}
-              </h3>
+              {/* 2. Content Wrapper: Keeps name and the info column next to each other */}
+              <div className="flex flex-row items-start gap-8 min-w-0">
+                {/* Product Name */}
+                <h3 className="text-sm font-bold text-deep truncate max-w-[140px] pt-0.5">
+                  {item.name}
+                </h3>
 
-              {/* Meta Attributes: Stacked vertically in column form, to the right of the name */}
-              <div className="flex flex-col gap-0.5 text-[11px] text-slate-600 shrink-0">
-                <div>
-                  <span className="font-semibold text-slate-400 font-mono">
-                    SKU:
-                  </span>{" "}
-                  {item.sku}
-                </div>
-                <div>
-                  <span className="font-semibold text-slate-400">Unit:</span>{" "}
-                  {item.unit || "N/A"}
-                </div>
-                <div>
-                  <span className="font-semibold text-slate-400">Qty:</span>{" "}
-                  <span className="font-mono font-bold text-deep">
-                    {item.quantity}
-                  </span>
+                {/* Meta Attributes: Stacked vertically in column form, to the right of the name */}
+                <div className="flex flex-col gap-0.5 text-[11px] text-slate-600 shrink-0">
+                  <div>
+                    <span className="font-semibold text-slate-400 font-mono">
+                      SKU:
+                    </span>{" "}
+                    {item.sku}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-slate-400">Unit:</span>{" "}
+                    {item.unit || "N/A"}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-slate-400">Qty:</span>{" "}
+                    <span className="font-mono font-bold text-deep">
+                      {item.quantity}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* RIGHT CONTAINER: Status Alert stacked ABOVE Edit/Order actions */}
-          <div className="flex flex-col items-end justify-center gap-1.5 shrink-0">
-            {/* Low Stock status tag */}
-            {item.quantity <= item.low_stock_threshold ? (
-              <span className="badge-low text-[9px] px-2 py-0.5">
-                Low Stock
-              </span>
-            ) : (
-              <span className="badge-good text-[9px] px-2 py-0.5">
-                In Stock
-              </span>
-            )}
+            {/* RIGHT CONTAINER: Status Alert stacked ABOVE Edit/Order actions */}
+            <div className="flex flex-col items-end justify-center gap-1.5 shrink-0">
+              {/* Low Stock status tag */}
+              {item.quantity <= item.low_stock_threshold ? (
+                <span className="badge-low text-[9px] px-2 py-0.5">
+                  Low Stock
+                </span>
+              ) : (
+                <span className="badge-good text-[9px] px-2 py-0.5">
+                  In Stock
+                </span>
+              )}
 
-            {/* Micro management interactive actions underneath */}
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => onEdit(item.id)}
-                className="px-2 py-1 text-xs font-bold rounded-stokko border border-slate-300 bg-white text-deep hover:bg-slate-50 transition"
-              >
-                Edit
-              </button>
-              <button className="btn-primary px-2 py-1 text-xs font-bold shadow-none hover:scale-100 active:scale-100">
-                Order
-              </button>
+              {/* Micro management interactive actions underneath */}
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => onEdit(item.id)}
+                  className="px-2 py-1 text-xs font-bold rounded-stokko border border-slate-300 bg-white text-deep hover:bg-deep hover:text-white transition cursor-pointer"
+                >
+                  Edit
+                </button>
+                <Link
+                  to={`/orders/add/${item.id || item.item_id}`}
+                  className="inline-flex items-center justify-center h-8 w-16 text-sm font-medium text-deep bg-amber-500 rounded-md shadow-sm hover:bg-amber-600 transition-colors duration-200 no-underline"
+                >
+                  Order
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

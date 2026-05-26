@@ -64,24 +64,25 @@ export default function OrdersDetails() {
     }
   }
 
-  if (loading) return (
-  <div className="card">
-    <p className="animate-pulse text-sm text-slate-500">Loading...</p>
-  </div>
-);
+  if (loading)
+    return (
+      <div className="card">
+        <p className="animate-pulse text-sm text-slate-500">Loading...</p>
+      </div>
+    );
   if (error) return <p>{error}</p>;
   if (!orderRows.length) return <p>No order found</p>;
 
   const order = orderRows[0];
 
   return (
-    <main className="grid gap-5">
+    <main className="grid gap-5 hover:cursor-default">
       <h1>Order Details</h1>
 
       <section className="card">
         <h2 className="mb-3">Items</h2>
 
-        <div className="grid gap-3">
+        <div className="grid gap-3 ">
           {orderRows.map((row) => (
             <div key={row.order_item_id} className="item-card">
               <div className="item-row">
@@ -107,7 +108,7 @@ export default function OrdersDetails() {
         </div>
       </section>
 
-      <section className="card">
+      <section className="card hover:cursor-default">
         <h2 className="mb-3">Order Info</h2>
 
         <div className="grid gap-2 text-sm">
@@ -142,7 +143,7 @@ export default function OrdersDetails() {
           <button
             onClick={handleReceive}
             disabled={order.status !== "submitted"}
-            className="btn-secondary"
+            className="btn-secondary !disabled:hover:bg-white"
           >
             <PackageCheck size={16} />
             Receive Order

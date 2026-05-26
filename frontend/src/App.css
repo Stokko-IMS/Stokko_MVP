@@ -53,7 +53,7 @@
   }
 
   .sidebar {
-    @apply fixed bottom-0 left-0 right-0 z-50 border-t border-slate-700 bg-deep text-white md:sticky md:top-0 md:h-screen md:w-64 md:border-t-0 md:p-4;
+    @apply fixed bottom-0 left-0 right-0 z-50 border-t border-slate-700 bg-deep text-white md:sticky md:top-0 md:flex md:h-screen md:w-64 md:flex-col md:border-t-0 md:p-4;
   }
 
   .sidebar-nav {
@@ -105,15 +105,21 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-stokko bg-amber px-4 py-2 text-sm font-bold text-deep hover:bg-amber/90 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100;
+    @apply inline-flex items-center justify-center gap-2 rounded-stokko bg-amber px-4 py-2 text-sm font-bold text-deep hover:bg-amber/90 hover:scale-[1.01] hover:cursor-pointer active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-stokko border border-deep px-4 py-2 text-sm font-bold text-deep hover:bg-deep hover:text-white hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100;
+    @apply inline-flex items-center justify-center gap-2 rounded-stokko border border-deep px-4 py-2 text-sm font-bold text-deep hover:bg-deep hover:text-white hover:cursor-pointer hover:scale-[1.01] active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100;
   }
 
   .btn-danger {
-    @apply inline-flex items-center justify-center gap-2 rounded-stokko bg-red-600 px-4 py-2 text-sm font-bold text-white hover:bg-red-700 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100;
+    @apply inline-flex items-center justify-center gap-2 rounded-stokko bg-red-600 px-4 py-2 text-sm font-bold text-white hover:bg-red-700 hover:cursor-pointer hover:scale-[1.01] active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100;
+  }
+
+  /* Hover effect to make it feel responsive */
+  .order-btn:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
   }
 
   .badge-low {

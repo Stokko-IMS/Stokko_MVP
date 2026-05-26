@@ -52,9 +52,10 @@ export default function AddOrder() {
       const order = await createOrder({
         supplier_name: form.supplier_name,
         supplier_email: form.supplier_email,
+        subject: form.subject,
+        message: form.message,
         status: "draft",
       });
-      console.log("CREATED ORDER:", order);
 
       await addItemsToOrder(order.id, {
         item_id: item.id,
@@ -62,7 +63,32 @@ export default function AddOrder() {
         price: Number(form.price),
       });
 
-      navigate("/inventory");
+      navigate("/orders");
+    } catch (err) {
+      console.log(err);
+      setError("Failed to create order");
+    }
+  }
+
+  async function handleApprove(e) {
+    e.preventDefault();
+
+    try {
+      const order = await createOrder({
+        supplier_name: form.supplier_name,
+        supplier_email: form.supplier_email,
+        subject: form.subject,
+        comment: form.comment,
+        status: "submitted",
+      });
+
+      await addItemsToOrder(order.id, {
+        item_id: item.id,
+        quantity: Number(form.quantity),
+        price: Number(form.price),
+      });
+
+      navigate("/orders");
     } catch (err) {
       console.log(err);
       setError("Failed to create order");
@@ -171,10 +197,18 @@ export default function AddOrder() {
           onChange={handleChange}
           required
         />
-
-        <button type="submit" className="btn-primary w-full">
-          Create Order
-        </button>
+        <div className="grid gap-3 pt-2 md:grid-cols-2">
+          <button type="submit" className="btn-secondary w-full">
+            Save to drafts
+          </button>
+          <button
+            type="button"
+            onClick={handleApprove}
+            className="btn-primary w-full"
+          >
+            Approve Order
+          </button>
+        </div>
       </form>
     </main>
   );

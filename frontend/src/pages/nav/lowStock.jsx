@@ -95,6 +95,7 @@
 
 // ============================ TEST Matt ========================
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getLowStockItems } from "../../api/inventory.js";
 import { getTransactions } from "../../api/inventoryTransactions.js";
 import AlertSummary from "../../components/AlertSummary";
@@ -190,6 +191,20 @@ export default function LowStock() {
             onChange={(e) => setSearch(e.target.value)}
             className="pl-9 w-full"
           />
+          {search && filteredItems.length > 0 && (
+            <div className="absolute left-0 top-full z-50 mt-1 w-full rounded-stokko border border-slate-200 bg-white shadow-lg">
+              {filteredItems.slice(0, 5).map((item) => (
+                <Link
+                  key={item.item_id}
+                  to={`/inventory/${item.item_id}`}
+                  onClick={() => setSearch("")}
+                  className="block px-3 py-2 text-sm font-medium text-deep transition hover:bg-slate-100"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
