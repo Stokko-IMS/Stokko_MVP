@@ -532,7 +532,7 @@ Returns a single transaction by ID.
 ---
 
 <details>
-<summary><strong>Swagger-Style Endpoint Reference</strong></summary>
+<summary><strong>Endpoint Reference</strong></summary>
 
 ```yaml
 openapi: 3.0.0
