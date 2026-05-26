@@ -15,7 +15,8 @@ export function AuthProvider({ children }) {
     const result = await response.json();
 
     if (!response.ok) {
-      throw Error(result.message);
+      // handles both: object with .message OR plain string
+      throw Error(result.message || result);
     }
     localStorage.setItem("token", result.token);
     setToken(result.token);
@@ -32,7 +33,7 @@ export function AuthProvider({ children }) {
     const result = await response.json();
 
     if (!response.ok) {
-      throw Error(result.message);
+      throw Error(result.message || result);
     }
     localStorage.setItem("token", result.token);
     setToken(result.token);

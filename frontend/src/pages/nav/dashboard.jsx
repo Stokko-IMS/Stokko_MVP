@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { getAllItems } from "../../api/items";
 import { getLowStockItems } from "../../api/inventory";
 import { getOrders } from "../../api/orders";
@@ -14,6 +15,12 @@ export default function Dashboard() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // location is for the registration successfull message
+  // Upon successful registration - success message appears but because reigster page is set to immediatately wipe page and reroute to dashboard
+  // useLocation sends success message to dashboard
+  const location = useLocation();
+  const [showSuccess, setShowSuccess] = useState(!!location.state?.message);
 
   useEffect(() => {
     async function fetchDashboardData() {
@@ -56,6 +63,15 @@ export default function Dashboard() {
 
   return (
     <main>
+      {showSuccess && location.state?.message && (
+        <div role="alert">
+          <p>{location.state.message}</p>
+          <button type="button" onClick={() => setShowSuccess(false)}>
+            ✕
+          </button>
+        </div>
+      )}
+
       <DashboardHeader
         filteredSearch={filteredSearch}
         search={search}

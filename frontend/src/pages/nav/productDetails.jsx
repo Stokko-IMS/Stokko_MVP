@@ -26,10 +26,21 @@ const ProductDetails = () => {
     getItem();
   }, [id]);
 
+  // const handleDelete = async () => {
+  //   if (window.confirm("Are you sure?")) {
+  //     deleteItem(id);
+  //     navigate("/inventory");
+  //   }
+  // };
+
   const handleDelete = async () => {
     if (window.confirm("Are you sure?")) {
-      deleteItem(id);
-      navigate("/inventory");
+      try {
+        await deleteItem(id); // adding await will page reloading before db deletes item - Picked up on google when debugging
+        navigate("/inventory");
+      } catch (err) {
+        console.error("Failed to delete item", err);
+      }
     }
   };
 

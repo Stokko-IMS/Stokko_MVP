@@ -1,10 +1,15 @@
-import { useActionState } from "react";
+import { useState, useActionState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from "../../contexts/authContext";
 
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   // useActionState takes (actionFunction, initialErrorState)
   // It returns [errorMessage, formActionTrigger, isPending]
@@ -40,7 +45,7 @@ export default function Login() {
           <input type="email" name="email" autoComplete="email" required />
         </label>
 
-        <label>
+        {/* <label>
           Password *
           <input
             type="password"
@@ -48,6 +53,25 @@ export default function Login() {
             autoComplete="current-password"
             required
           />
+        </label> */}
+
+        {/* adding in showPassword on/off with Eye from lucide-react */}
+        <label>
+          Password *
+          <div>
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              autoComplete="current-password"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
         </label>
 
         {/* Forgot password link (UI only for MVP) */}

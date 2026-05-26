@@ -1,14 +1,16 @@
 import { useActionState, useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 
 export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const [error, tryRegister, isPending] = useActionState(
     async (prevState, formData) => {
-      // Extract variables directly matching your backend's requireBody payload
+      // Extract variables directly matching backend's requireBody payload
       const name = formData.get("name");
       const email = formData.get("email");
       const password = formData.get("password");
@@ -17,15 +19,14 @@ export default function Register() {
       // Safety filer **NEW ======= checks for weak password with predictable patterns, flags the user during onboarding
       const sequentialPattern = /(abc|123|qwerty|password)/i;
       if (sequentialPattern.test(password)) {
-        return {
-          message:
-            "Password is too predictable. Please avoid sequential sequences like '123' or 'abc'.",
-        };
+        return "Too predictable. Avoid easy patterns like '123' or 'abc'.";
       }
       try {
-        // Fires the payload directly to your existing Express route
+        // Fires the payload directly to existing Express route
         await register({ name, email, password, contact_number });
-        navigate("/dashboard");
+        navigate("/dashboard", {
+          state: { message: "Account created successfully!" },
+        });
         return null;
       } catch (e) {
         return e.message;
@@ -34,8 +35,9 @@ export default function Register() {
     null,
   );
 
-//   // Checks for duplicate emails "already exists"
-  const isDuplicateEmail = error?.message?.toLowerCase().includes("exists");
+  //   // Checks for duplicate emails "already exists"
+  const isDuplicateEmail =
+    typeof error === "string" && error.toLowerCase().includes("exists");
 
   return (
     <main>
@@ -63,7 +65,7 @@ export default function Register() {
           <input type="tel" name="contact_number" autoComplete="tel" />
         </label>
 
-        <label>
+        {/* <label>
           Password *
           <input
             type="password"
@@ -71,6 +73,28 @@ export default function Register() {
             autoComplete="new-password"
             required
           />
+        </label> */}
+
+        {/* add confirm password post MVP */}
+
+        {/*Eye on / Eye off */}
+        <label>
+          Password *
+          <div>
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              autoComplete="new-password"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
         </label>
 
         {/* Portfolio Security Note */}
@@ -86,7 +110,7 @@ export default function Register() {
           {isPending ? "Creating account..." : "Register"}
         </button>
 
-        {error && !isDuplicateEmail && <p role="alert">{error.message}</p>}
+        {error && !isDuplicateEmail && <p role="alert">{error}</p>}
 
         {isDuplicateEmail && (
           <p role="alert">
@@ -101,4 +125,3 @@ export default function Register() {
     </main>
   );
 }
-
