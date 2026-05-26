@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { AlertTriangle, BellOff } from "lucide-react";
 
 export default function AlertRow({ item, onMute, onGeneratePO }) {
   const isCritical =
@@ -12,7 +13,11 @@ export default function AlertRow({ item, onMute, onGeneratePO }) {
         <p>
           Stock: {item.quantity} / min: {item.low_stock_threshold}
         </p>
-        {isCritical && <span>Critical — immediate action required</span>}
+        {isCritical && (
+          <span>
+            <AlertTriangle size={16} /> Critical — immediate action required
+          </span>
+        )}
       </div>
 
       <div>
@@ -21,7 +26,9 @@ export default function AlertRow({ item, onMute, onGeneratePO }) {
         <Link to={`/orders/add/${item.id || item.item_id}`}>Create Order</Link>
 
         <details>
-          <summary>Mute alerts</summary>
+          <summary>
+            <BellOff size={14} /> Mute alerts
+          </summary>
           <button onClick={() => onMute(item.item_id, 1)}>1 day</button>
           <button onClick={() => onMute(item.item_id, 7)}>1 week</button>
           <button onClick={() => onMute(item.item_id, 30)}>1 month</button>

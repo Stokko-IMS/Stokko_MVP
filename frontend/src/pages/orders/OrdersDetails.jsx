@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import { PackageCheck, Trash2, ThumbsUp } from "lucide-react";
+
 import {
   getOrderDetails,
   approveOrder,
@@ -99,13 +101,14 @@ export default function OrdersDetails() {
         <h2>Actions</h2>
 
         <button onClick={handleApprove} disabled={order.status !== "draft"}>
-          Approve Order
+          <ThumbsUp size={16} /> Approve Order
         </button>
         <button onClick={handleReceive} disabled={order.status !== "submitted"}>
+          <PackageCheck size={16} />
           Receive Order
         </button>
         <button onClick={handleDelete} disabled={order.status !== "draft"}>
-          Delete Order
+          <Trash2 size={16} /> Delete Order
         </button>
       </section>
     </main>

@@ -1,11 +1,16 @@
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
+import { LayoutDashboard, Package, AlertTriangle, Truck } from "lucide-react";
 
 const NAV_ITEMS = [
-  { path: "/dashboard", label: "Dashboard", icon: "ti-layout-dashboard" },
-  { path: "/inventory", label: "Inventory", icon: "ti-package" },
-  { path: "/lowStock", label: "Low stock", icon: "ti-alert-triangle" },
-  { path: "/orders", label: "Orders", icon: "ti-truck" },
+  {
+    path: "/dashboard",
+    label: "Dashboard",
+    icon: <LayoutDashboard size={18} />,
+  },
+  { path: "/inventory", label: "Inventory", icon: <Package size={18} /> },
+  { path: "/lowStock", label: "Low stock", icon: <AlertTriangle size={18} /> },
+  { path: "/orders", label: "Orders", icon: <Truck size={18} /> },
 ];
 
 export default function Layout() {
@@ -37,6 +42,7 @@ export default function Layout() {
               to={path}
               className={({ isActive }) => (isActive ? "active" : "")}
             >
+              {icon}
               <span>{label}</span>
             </NavLink>
           ))}

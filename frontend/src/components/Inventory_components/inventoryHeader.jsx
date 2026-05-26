@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Search } from "lucide-react";
 
 export default function InventoryHeader({
   filteredItems,
@@ -10,6 +11,7 @@ export default function InventoryHeader({
   return (
     <div>
       <div>
+        <Search size={16} />
         <input
           type="text"
           placeholder="Search by name"
