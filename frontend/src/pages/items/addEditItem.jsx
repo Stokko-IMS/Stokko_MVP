@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { getItemById, createItem, updateItem } from "../../api/items";
+import { Save } from "lucide-react";
 
 {
   /* The structure of this code was given to me by chatGPT
@@ -152,6 +153,7 @@ export default function InventoryForm() {
       />
 
       <button type="submit" disabled={loading}>
+        <Save size={16} />
         {isEditMode ? "Update Item" : "Create Item"}
       </button>
     </form>

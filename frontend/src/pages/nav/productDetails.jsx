@@ -59,8 +59,13 @@ const ProductDetails = () => {
         {item.quantity} {item.unit}
       </p>
       <p>{item.low_stock_threshold}</p>
-      <Link to={`/inventory/edit/${id}`}>Edit this Item</Link>
-      <button onClick={handleDelete}>Delete Item</button>
+      <Link to={`/inventory/edit/${id}`}>
+        <Pencil size={16} /> Edit this Item
+      </Link>
+      <button onClick={handleDelete}>
+        <Trash2 size={16} />
+        Delete Item
+      </button>
     </div>
   );
 };

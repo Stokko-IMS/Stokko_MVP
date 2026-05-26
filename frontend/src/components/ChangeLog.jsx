@@ -1,4 +1,5 @@
 // Boiler plate from AI
+import { History } from "lucide-react";
 
 export default function ChangeLog({ transactions }) {
   if (transactions.length === 0) {
@@ -7,6 +8,7 @@ export default function ChangeLog({ transactions }) {
 
   return (
     <div>
+      <History size={18} />
       <h2>Change log</h2>
       <table>
         <thead>
