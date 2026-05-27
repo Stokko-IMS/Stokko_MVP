@@ -23,15 +23,17 @@ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 CREATE TABLE items (
 id SERIAL PRIMARY KEY,
-name TEXT UNIQUE NOT NULL, /* normalize input in items.js in QUERIES folder with either LOWER() or ILIKE */
+name TEXT NOT NULL, /* normalize input in items.js in QUERIES folder with either LOWER() or ILIKE */
 description TEXT,
-sku TEXT UNIQUE NOT NULL,
+sku TEXT NOT NULL,
 unit TEXT NOT NULL DEFAULT 'items e.g.(boxes, single unit, bottles, etc...)',
 quantity INTEGER NOT NULL DEFAULT 0 CHECK (quantity >= 0),
 low_stock_threshold INTEGER NOT NULL,
 item_photo BYTEA, /* change data type to VARCHAR when image server is acquired */
 user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+UNIQUE (user_id, name),
+UNIQUE (user_id, sku)
 );
 
 /* CREATE TABLE locations (
