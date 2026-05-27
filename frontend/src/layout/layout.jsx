@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 import { LayoutDashboard, Package, AlertTriangle, Truck } from "lucide-react";
+import { useTheme } from "../contexts/themeContext";
 import ThemeToggle from "../components/ThemeToggle";
 import Stokko_logo from "../assets/Stokko_logo.png";
 
@@ -17,6 +18,7 @@ const NAV_ITEMS = [
 
 export default function Layout() {
   const { logout } = useAuth();
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -30,7 +32,7 @@ export default function Layout() {
   };
 
   return (
-    <div className="app-shell">
+    <div className={theme === "dark" ? "dark app-shell" : "app-shell"}>
       <aside className="sidebar">
         <div className="relative hidden md:block">
           <div className="pointer-events-none absolute -inset-5 bg-[radial-gradient(ellipse_at_center,rgba(148,163,184,0.95)_0%,rgba(148,163,184,0.55)_30%,rgba(100,116,139,0.25)_55%,transparent_80%)]" />
