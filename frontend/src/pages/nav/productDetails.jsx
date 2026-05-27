@@ -63,7 +63,9 @@ const ProductDetails = () => {
 
           <div className="min-w-0 flex-1">
             <h1>{item.name}</h1>
-            <p className="mt-2 text-sm text-slate-600">{item.description}</p>
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              {item.description}
+            </p>
 
             <div className="mt-4 grid gap-2 text-sm">
               <p className="font-mono">SKU: {item.sku}</p>

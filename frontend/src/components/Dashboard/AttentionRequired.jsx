@@ -77,13 +77,15 @@ export default function AttentionRequired({ lowStock }) {
                   />
 
                   <div className="min-w-0">
-                    <h5 className="font-bold text-sm text-deep">{item.name}</h5>
+                    <h5 className="font-bold text-sm text-deep dark:text-slate-100">
+                      {item.name}
+                    </h5>
                     <p className="font-mono text-xs text-slate-500">
                       SKU: {item.sku}
                     </p>
                     <p className="font-mono text-xs text-slate-500">
                       Quantity:{" "}
-                      <span className="font-bold text-deep">
+                      <span className="font-bold text-deep dark:text-slate-100">
                         {item.quantity}
                       </span>
                     </p>

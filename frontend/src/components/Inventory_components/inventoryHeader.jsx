@@ -243,11 +243,11 @@ export default function InventoryHeader({
   setSearch,
 }) {
   return (
-    <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6 bg-white p-4 rounded-stokko border border-slate-200 shadow-sm">
+    <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6 p-4 rounded-stokko bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
       {/* 1. Left Block: Headings stacked with consistent amber underline */}
       <div className="flex flex-col gap-1.5 shrink-0 text-left">
         <div className="w-fit border-b-2 border-amber pb-0.5">
-          <h1 className="text-xl font-extrabold tracking-tight text-deep m-0 leading-none">
+          <h1 className="text-xl font-extrabold tracking-tight text-deep dark:text-slate-100 m-0 leading-none">
             Inventory
           </h1>
         </div>
@@ -257,7 +257,10 @@ export default function InventoryHeader({
       </div>
 
       {/* 2. Middle Block: Centered Search Input Field */}
-      <div className="relative w-full md:flex-1 md:max-w-md md:mx-auto">
+      <div
+        className="relative w-full md:flex-1 md:max-w-md md:mx-auto"
+        onBlur={() => setTimeout(() => setSearch(""), 150)}
+      >
         <Search
           size={16}
           className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
@@ -272,13 +275,13 @@ export default function InventoryHeader({
 
         {/* Dropdown Auto-Complete Search Results */}
         {search && filteredItems.length > 0 && (
-          <div className="absolute top-full left-0 z-50 mt-1 w-full rounded-stokko border border-slate-200 bg-white shadow-md">
+          <div className="absolute top-full left-0 z-50 mt-1 w-full rounded-stokko bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-md">
             {filteredItems.map((item) => (
               <Link
                 key={item.id}
                 to={`/inventory/${item.id}`}
                 onClick={() => setSearch("")}
-                className="block px-3 py-2 text-sm hover:bg-slate-100 text-deep"
+                className="block px-3 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800 text-deep dark:text-slate-100 dark:text-slate-100"
               >
                 {item.name}
               </Link>
@@ -293,19 +296,19 @@ export default function InventoryHeader({
         <div className="flex flex-row items-center gap-1.5">
           <button
             onClick={() => setFilter("all")}
-            className={`${filter === "all" ? "btn-primary" : "btn-secondary"} px-3 py-1.5 text-xs font-bold`}
+            className={`${filter === "all" ? "btn-primary" : "btn-secondary dark:bg-white dark:hover:text-slate-700"} px-3 py-1.5 text-xs font-bold`}
           >
             All
           </button>
           <button
             onClick={() => setFilter("low")}
-            className={`${filter === "low" ? "btn-primary" : "btn-secondary"} px-3 py-1.5 text-xs font-bold`}
+            className={`${filter === "low" ? "btn-primary" : "btn-secondary dark:bg-white dark:hover:text-slate-700"} px-3 py-1.5 text-xs font-bold`}
           >
             Low stock
           </button>
           <button
             onClick={() => setFilter("in")}
-            className={`${filter === "in" ? "btn-primary" : "btn-secondary"} px-3 py-1.5 text-xs font-bold`}
+            className={`${filter === "in" ? "btn-primary" : "btn-secondary dark:bg-white dark:hover:text-slate-700"} px-3 py-1.5 text-xs font-bold`}
           >
             In stock
           </button>

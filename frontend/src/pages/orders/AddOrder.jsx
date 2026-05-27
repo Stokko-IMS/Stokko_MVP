@@ -107,7 +107,7 @@ export default function AddOrder() {
     <main className="grid gap-5">
       <div>
         <h1>Create Order</h1>
-        <p className="mt-1 text-sm text-slate-600">
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
           Generate a supplier order for this inventory item.
         </p>
       </div>
@@ -124,7 +124,9 @@ export default function AddOrder() {
 
           <div className="min-w-0 flex-1 text-sm">
             <p className="font-bold">{item.name}</p>
-            <p className="text-slate-600">{item.description}</p>
+            <p className="text-slate-600 dark:text-slate-300">
+              {item.description}
+            </p>
             <p className="font-mono">Current Stock: {item.quantity}</p>
             <p className="font-mono">
               Low Stock Threshold: {item.low_stock_threshold}

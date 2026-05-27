@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 import { LayoutDashboard, Package, AlertTriangle, Truck } from "lucide-react";
+import ThemeToggle from "../components/ThemeToggle";
 import Stokko_logo from "../assets/Stokko_logo.png";
 
 const NAV_ITEMS = [
@@ -41,6 +42,10 @@ export default function Layout() {
           </div>
         </div>
 
+        <div className="hidden md:block md:mt-3">
+          <ThemeToggle />
+        </div>
+
         <nav className="sidebar-nav md:mt-4" aria-label="Main navigation">
           {NAV_ITEMS.map(({ path, label, icon }) => (
             <NavLink
@@ -73,12 +78,18 @@ export default function Layout() {
             className="relative w-20 p-0 drop-shadow-[0_2px_8px_rgba(15,23,42,0.65)]"
           />
 
-          <button
-            onClick={handleLogout}
-            className="rounded-stokko bg-amber px-3 py-1 text-sm font-bold text-deep shadow-md transition hover:bg-amber/90"
-          >
-            Logout
-          </button>
+          <div className="relative flex items-center gap-2">
+            <div className="w-auto">
+              <ThemeToggle />
+            </div>
+
+            <button
+              onClick={handleLogout}
+              className="rounded-stokko bg-amber px-3 py-1 text-sm font-bold text-deep dark:text-slate-100 shadow-md transition hover:bg-amber/90"
+            >
+              Logout
+            </button>
+          </div>
         </header>
 
         <main className="page">

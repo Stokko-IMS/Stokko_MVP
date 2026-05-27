@@ -6,7 +6,7 @@ export default function CriticalAlerts({ items, onMute }) {
   }
 
   return (
-    <div>
+    <div className="grid gap-4">
       <h2>Critical stock alerts — immediate action required</h2>
       {items.map((item) => (
         <AlertRow key={item.item_id} item={item} onMute={onMute} />

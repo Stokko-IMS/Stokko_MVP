@@ -42,11 +42,11 @@ import { Link } from "react-router-dom";
 
 export default function DashboardHeader({ search, setSearch, filteredSearch }) {
   return (
-    <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6 bg-white p-4 rounded-stokko border border-slate-200 shadow-sm">
+    <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6 p-4 rounded-stokko bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
       {/* Left Block: Headings stacked vertically with the amber underline decoration */}
       <div className="flex flex-col gap-1.5 shrink-0 text-left">
         <div className="w-fit border-b-2 border-amber pb-0.5">
-          <h1 className="text-xl font-extrabold tracking-tight text-deep m-0 leading-none">
+          <h1 className="text-xl font-extrabold tracking-tight text-deep dark:text-slate-100 m-0 leading-none">
             Dashboard
           </h1>
         </div>
@@ -56,7 +56,10 @@ export default function DashboardHeader({ search, setSearch, filteredSearch }) {
       </div>
 
       {/* Right Block: Centered Search Input Field */}
-      <div className="relative w-full md:flex-1 md:max-w-md md:mx-auto">
+      <div
+        className="relative w-full md:flex-1 md:max-w-md md:mx-auto"
+        onBlur={() => setTimeout(() => setSearch(""), 150)}
+      >
         <input
           type="text"
           placeholder="Search inventory..."
@@ -67,13 +70,13 @@ export default function DashboardHeader({ search, setSearch, filteredSearch }) {
 
         {/* Dropdown Auto-Complete Search Results Panel */}
         {search && filteredSearch.length > 0 && (
-          <div className="absolute top-full left-0 z-50 mt-1 w-full rounded-stokko border border-slate-200 bg-white shadow-md">
+          <div className="absolute top-full left-0 z-50 mt-1 w-full rounded-stokko bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-md">
             {filteredSearch.map((item) => (
               <Link
                 key={item.id}
                 to={`/inventory/${item.id}`}
                 onClick={() => setSearch("")}
-                className="block px-3 py-2 text-sm hover:bg-slate-100 text-deep"
+                className="block px-3 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800 text-deep dark:text-slate-100 dark:text-slate-100"
               >
                 <div>{item.name}</div>
               </Link>

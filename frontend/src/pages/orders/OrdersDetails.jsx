@@ -94,7 +94,7 @@ export default function OrdersDetails() {
 
                 <div>
                   <p className="font-bold">Item: {row.item_name}</p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-slate-600 dark:text-slate-300">
                     Description: {row.description}
                   </p>
                   <p className="font-mono text-sm">
@@ -143,7 +143,7 @@ export default function OrdersDetails() {
           <button
             onClick={handleReceive}
             disabled={order.status !== "submitted"}
-            className="btn-secondary !disabled:hover:bg-white"
+            className="btn-secondary !disabled:hover:bg-white dark:bg-white dark:hover:text-deep"
           >
             <PackageCheck size={16} />
             Receive Order

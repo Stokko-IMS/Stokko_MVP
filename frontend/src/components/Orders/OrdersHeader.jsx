@@ -4,12 +4,15 @@ export default function OrdersHeader({ search, setSearch, filteredSearch }) {
   return (
     <section className="page-header">
       <div>
-        <p className="text-sm text-slate-600">
+        <p className="text-sm text-slate-600 dark:text-slate-300">
           Overview of current warehouse orders
         </p>
       </div>
 
-      <div className="relative w-full md:max-w-sm">
+      <div
+        className="relative w-full md:max-w-sm"
+        onBlur={() => setTimeout(() => setSearch(""), 150)}
+      >
         <input
           type="text"
           placeholder="Search orders..."
@@ -18,13 +21,13 @@ export default function OrdersHeader({ search, setSearch, filteredSearch }) {
         />
 
         {search && filteredSearch.length > 0 && (
-          <div className="absolute top-full left-0 z-50 mt-1 w-full rounded-stokko border border-slate-200 bg-white shadow-md">
+          <div className="absolute top-full left-0 z-50 mt-1 w-full rounded-stokko bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-md">
             {filteredSearch.map((order) => (
               <Link
                 key={order.id}
                 to={`/orders/${order.id}`}
                 onClick={() => setSearch("")}
-                className="block px-3 py-2 text-sm hover:bg-slate-100"
+                className="block px-3 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800 text-deep dark:text-slate-100"
               >
                 Order: {order.id}
               </Link>

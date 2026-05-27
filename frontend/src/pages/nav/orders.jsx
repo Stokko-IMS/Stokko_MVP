@@ -140,11 +140,11 @@ export default function Orders() {
   return (
     <main className="grid gap-5">
       {/* 1. Consistent Header Block */}
-      <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6 bg-white p-4 rounded-stokko border border-slate-200 shadow-sm">
+      <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6 p-4 rounded-stokko bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
         {/* Left Side Labels */}
         <div className="flex flex-col gap-1.5 shrink-0 text-left">
           <div className="w-fit border-b-2 border-amber pb-0.5">
-            <h1 className="text-xl font-extrabold tracking-tight text-deep m-0 leading-none">
+            <h1 className="text-xl font-extrabold tracking-tight text-deep dark:text-slate-100 m-0 leading-none">
               Orders
             </h1>
           </div>
@@ -154,7 +154,10 @@ export default function Orders() {
         </div>
 
         {/* Center Search Input with Active Navigation Links */}
-        <div className="relative w-full md:flex-1 md:max-w-md md:mx-auto">
+        <div
+          className="relative w-full md:flex-1 md:max-w-md md:mx-auto"
+          onBlur={() => setTimeout(() => setSearch(""), 150)}
+        >
           <Search
             size={16}
             className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
@@ -168,13 +171,13 @@ export default function Orders() {
           />
 
           {search && filteredSearch.length > 0 && (
-            <div className="absolute top-full left-0 z-50 mt-1 w-full rounded-stokko border border-slate-200 bg-white shadow-md text-left">
+            <div className="absolute top-full left-0 z-50 mt-1 w-full rounded-stokko bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-md text-left">
               {filteredSearch.map((order) => (
                 <Link
                   key={order.id}
                   to={`/orders/${order.id}`} // Functional target route matching app structure
                   onClick={() => setSearch("")}
-                  className="block w-full text-left px-3 py-2 text-sm hover:bg-slate-100 text-deep font-medium"
+                  className="block w-full text-left px-3 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800 text-deep dark:text-slate-100 dark:text-slate-100 font-medium"
                 >
                   Order #{order.id}{" "}
                   <span className="text-xs text-slate-400">

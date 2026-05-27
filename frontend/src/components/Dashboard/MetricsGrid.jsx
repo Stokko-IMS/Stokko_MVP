@@ -33,42 +33,42 @@ export default function MetricsGrid({ items, orders, lowStock }) {
     <div className="grid grid-cols-3 gap-3 w-full">
       {/* Box 1: Low Stock Items */}
       <div className="metric-card flex flex-col justify-center py-3 px-2 sm:p-4 min-w-0">
-        <div className="flex flex-row items-center gap-1.5 text-[11px] sm:text-sm text-slate-600 min-w-0 w-full mb-1 sm:mb-2">
+        <div className="flex flex-row items-center gap-1.5 text-[11px] sm:text-sm text-slate-600 dark:text-slate-300 min-w-0 w-full mb-1 sm:mb-2">
           <AlertTriangle
             size={16}
             className="text-amber shrink-0 sm:w-5 sm:h-5"
           />
           <span className="truncate font-medium leading-none">Low Stock</span>
         </div>
-        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep">
+        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep dark:text-slate-100">
           {lowStock.length}
         </h3>
       </div>
 
       {/* Box 2: Total Items */}
       <div className="metric-card flex flex-col justify-center py-3 px-2 sm:p-4 min-w-0">
-        <div className="flex flex-row items-center gap-1.5 text-[11px] sm:text-sm text-slate-600 min-w-0 w-full mb-1 sm:mb-2">
+        <div className="flex flex-row items-center gap-1.5 text-[11px] sm:text-sm text-slate-600 dark:text-slate-300 min-w-0 w-full mb-1 sm:mb-2">
           <Package
             size={16}
             className="text-slate-400 shrink-0 sm:w-5 sm:h-5"
           />
           <span className="truncate font-medium leading-none">Total Items</span>
         </div>
-        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep">
+        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep dark:text-slate-100">
           {items.length}
         </h3>
       </div>
 
       {/* Box 3: Total Orders */}
       <div className="metric-card flex flex-col justify-center py-3 px-2 sm:p-4 min-w-0">
-        <div className="flex flex-row items-center gap-1.5 text-[11px] sm:text-sm text-slate-600 min-w-0 w-full mb-1 sm:mb-2">
+        <div className="flex flex-row items-center gap-1.5 text-[11px] sm:text-sm text-slate-600 dark:text-slate-300 min-w-0 w-full mb-1 sm:mb-2">
           <ShoppingCart
             size={16}
             className="text-slate-400 shrink-0 sm:w-5 sm:h-5"
           />
           <span className="truncate font-medium leading-none">Orders</span>
         </div>
-        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep">
+        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep dark:text-slate-100">
           {orders.length}
         </h3>
       </div>

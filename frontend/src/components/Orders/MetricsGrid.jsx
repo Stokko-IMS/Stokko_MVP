@@ -46,11 +46,11 @@ export default function MetricsGrid({
             size={16}
             className="text-slate-400 shrink-0 sm:w-5 sm:h-5"
           />
-          <span className="badge-good bg-slate-100 text-slate-600 text-[10px] sm:text-xs px-2 py-0.5 shrink-0 truncate font-bold">
+          <span className="badge-good bg-slate-100 text-slate-600 dark:text-slate-750 text-[10px] sm:text-xs px-2 py-0.5 shrink-0 truncate font-bold">
             Total Orders
           </span>
         </div>
-        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep text-left">
+        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep dark:text-slate-100 text-left">
           {orders?.length || 0}
         </h3>
       </div>
@@ -63,7 +63,7 @@ export default function MetricsGrid({
             Pending
           </span>
         </div>
-        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep text-left">
+        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep dark:text-slate-100 text-left">
           {approvalNeededOrders?.length || 0}
         </h3>
       </div>
@@ -79,7 +79,7 @@ export default function MetricsGrid({
             Completed
           </span>
         </div>
-        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep text-left">
+        <h3 className="metric-value text-xl sm:text-3xl leading-none font-bold text-deep dark:text-slate-100 text-left">
           {completedOrders?.length || 0}
         </h3>
       </div>
